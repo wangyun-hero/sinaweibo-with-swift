@@ -32,8 +32,27 @@ class WYVisitorView: UIView {
         {
             //代表是首页
             label.text = message
+            startAnimation()
         }
         
+        
+    }
+    
+    
+    //让图片转起来
+    func startAnimation () {
+        //初始化一个动画
+        let ani = CABasicAnimation(keyPath: "transform.rotation")
+        //设置到某一个值
+        ani.toValue = M_PI * 2
+        //设置重复次数
+        ani.repeatCount = MAXFLOAT
+        //设置动画的时间
+        ani.duration = 20
+        // 是否移除在完成的时候。如果切换界面或者应用程序退到后台，那么动画会被释放掉。指定这个值的话就代表在做以上两个操作的时候不让其移除
+        ani.isRemovedOnCompletion =  false
+        //添加动画
+        circleView.layer.add(ani, forKey: nil)
         
     }
     

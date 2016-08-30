@@ -22,9 +22,12 @@ class WYVisitorView: UIView {
     
     //初始化UI
     func setupUI() {
+        self.backgroundColor = UIColor(white: 237/255, alpha: 1)
+
         //将控件添加到view上
         addSubview(iconView)
         addSubview(circleView)
+        addSubview(maskview)
         addSubview(label)
         addSubview(registBtn)
         addSubview(loginBtn)
@@ -50,7 +53,7 @@ class WYVisitorView: UIView {
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
         
-        
+       //约束
         circleView.snp_makeConstraints { (make) in
             make.center.equalTo(iconView)
         }
@@ -73,6 +76,13 @@ class WYVisitorView: UIView {
             make.right.equalTo(label)
             make.top.equalTo(label.snp_bottom).offset(16)
             make.size.equalTo(CGSize(width: 100, height: 35))
+        }
+        
+        maskview.snp_makeConstraints { (make ) in
+            make.top.equalTo(self)
+            make.left.equalTo(self)
+            make.right.equalTo(self)
+            make.bottom.equalTo(registBtn)
         }
         
         
@@ -119,8 +129,8 @@ class WYVisitorView: UIView {
     }()
 
     
-    
-    
+    //懒加载半透明图
+    lazy var maskview = UIImageView(image: #imageLiteral(resourceName: "visitordiscover_feed_mask_smallicon"))
     
     
     

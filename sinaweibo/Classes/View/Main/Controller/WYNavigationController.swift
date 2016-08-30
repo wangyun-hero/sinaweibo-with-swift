@@ -26,7 +26,7 @@ class WYNavigationController: UINavigationController {
                 t = childViewControllers.first?.title ?? "返回"
             }
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_back_withtext", title: t, target: self, action: #selector(back))
-            
+            print("w")
         
         }
         //!!!!!!!!!!!!!!!!!  一定要调用

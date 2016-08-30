@@ -13,6 +13,13 @@ class WYHomeTableViewController: WYVisitorViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if userLogin == false {
+            visitorView.setvisitorViewInfo(imageName: nil, message: "关注一些人，回这里看看有什么惊喜")
+            return
+        }
+        
+        
+        
        setupUI()
         
     }

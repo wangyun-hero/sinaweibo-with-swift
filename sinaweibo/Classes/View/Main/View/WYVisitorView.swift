@@ -20,14 +20,32 @@ class WYVisitorView: UIView {
     }
  
     
+    func setvisitorViewInfo (imageName:String?,message:String?) {
+        //此时是后三个页面的情况
+        if imageName != nil {
+            circleView.isHidden = true
+            iconView.image = UIImage(named: imageName!)
+            label.text = message
+            
+        }
+        else
+        {
+            //代表是首页
+            label.text = message
+        }
+        
+        
+    }
+    
+    
     //初始化UI
     func setupUI() {
-        self.backgroundColor = UIColor(white: 237/255, alpha: 1)
+        backgroundColor = UIColor(white: 237/255, alpha: 1)
 
         //将控件添加到view上
-        addSubview(iconView)
         addSubview(circleView)
         addSubview(maskview)
+        addSubview(iconView)
         addSubview(label)
         addSubview(registBtn)
         addSubview(loginBtn)
@@ -68,7 +86,7 @@ class WYVisitorView: UIView {
         registBtn.snp_makeConstraints { (make) in
             make.top.equalTo(label.snp_bottom).offset(16)
             make.left.equalTo(label)
-            make.width.equalTo(100)
+            //make.width.equalTo(100)
             make.size.equalTo(CGSize(width: 100, height: 35))
         }
         
@@ -91,7 +109,7 @@ class WYVisitorView: UIView {
     
     //懒加载控件
     //房子的图标
-    lazy var iconView = UIImageView(image: #imageLiteral(resourceName: "visitordiscover_feed_image_house"))
+    private lazy var iconView = UIImageView(image: #imageLiteral(resourceName: "visitordiscover_feed_image_house"))
     
     //转圈的图标
     lazy var circleView = UIImageView(image: #imageLiteral(resourceName: "visitordiscover_feed_image_smallicon"))

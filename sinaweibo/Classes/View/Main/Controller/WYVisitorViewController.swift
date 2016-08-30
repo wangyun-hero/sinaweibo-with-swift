@@ -28,10 +28,19 @@ class WYVisitorViewController: UITableViewController {
     
     //初始化UI
     func setupView () {
-        let v = WYVisitorView()
+        let v = self.visitorView
         v.backgroundColor = UIColor.white
         self.view = v
     }
+    
+    //懒加载view
+    lazy var visitorView :WYVisitorView = {
+        
+        let visitorView = WYVisitorView()
+        
+        return visitorView
+    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

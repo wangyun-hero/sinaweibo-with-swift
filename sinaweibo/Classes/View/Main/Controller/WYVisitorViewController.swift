@@ -10,18 +10,23 @@ import UIKit
 
 class WYVisitorViewController: UITableViewController {
 
+    //定义属性来记录用户是登录状态还是未登录
     var userLogin = true
     
+    //重写loadview的方法,加载我们要显示的视图
     override func loadView() {
+        //如果是登录状态,那么正常显示
         if userLogin {
             super.loadView()
         }else
+            //如果没有登录,那么加载我们自己定义的view
         {
             setupView()
             
         }
     }
     
+    //初始化UI
     func setupView () {
         let v = UIView()
         v.backgroundColor = UIColor.orange

@@ -61,8 +61,9 @@ class WYVisitorViewController: UITableViewController {
     }
 
     func visitorViewWillLogin () {
-        
-        print("哈哈哈哈哈")
+        //包裹一个导航控制器
+        let vc = WYNavigationController(rootViewController: WYOAuthViewController())
+        self.present(vc, animated: true, completion: nil)
         
         
     }

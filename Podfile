@@ -7,4 +7,8 @@ target 'sinaweibo' do
 
   # Pods for sinaweibo
 
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
+
 end

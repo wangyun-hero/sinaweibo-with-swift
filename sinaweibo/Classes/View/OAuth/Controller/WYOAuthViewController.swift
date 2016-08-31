@@ -12,8 +12,19 @@ class WYOAuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
- view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.white
+        self.title = "登录我的"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(close))
+        
         // Do any additional setup after loading the view.
+    }
+    
+   @objc private func close () {
+        self.dismiss(animated: true, completion: nil)
+    
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

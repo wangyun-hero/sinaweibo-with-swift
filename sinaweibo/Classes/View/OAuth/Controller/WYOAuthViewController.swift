@@ -15,6 +15,7 @@ class WYOAuthViewController: UIViewController {
         view.backgroundColor = UIColor.white
         self.title = "登录我的"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(close))
+        print("一个测试")
         
         // Do any additional setup after loading the view.
     }

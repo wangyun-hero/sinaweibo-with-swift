@@ -58,7 +58,7 @@ class WYVisitorView: UIView {
     
     
     //初始化UI
-    func setupUI() {
+   private func setupUI() {
         backgroundColor = UIColor(white: 237/255, alpha: 1)
 
         //将控件添加到view上
@@ -76,7 +76,7 @@ class WYVisitorView: UIView {
         
         // 2. 添加约束
         iconView.translatesAutoresizingMaskIntoConstraints = false
-        /**
+    /**
          - 要约束的对象
          - 要约束的属性 left,right
          - 等于
@@ -86,36 +86,36 @@ class WYVisitorView: UIView {
          - 偏移量
          
          */
-        addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
+    addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+    addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
-        
+    
        //约束
-        circleView.snp_makeConstraints { (make) in
+        circleView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(iconView)
         }
         
-        label.snp_makeConstraints { (make) in
+        label.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(iconView)
             make.top.equalTo(circleView.snp_bottom).offset(16)
             make.width.equalTo(225)
             
         }
         
-        registBtn.snp_makeConstraints { (make) in
+        registBtn.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(label.snp_bottom).offset(16)
             make.left.equalTo(label)
             //make.width.equalTo(100)
-            make.size.equalTo(CGSize(width: 100, height: 35))
+            make.size.equalTo(CGSize(width: 80, height: 30))
         }
         
-        loginBtn.snp_makeConstraints { (make) in
+        loginBtn.snp_makeConstraints { (make) -> Void in
             make.right.equalTo(label)
             make.top.equalTo(label.snp_bottom).offset(16)
-            make.size.equalTo(CGSize(width: 100, height: 35))
+            make.size.equalTo(CGSize(width: 80, height: 30))
         }
         
-        maskview.snp_makeConstraints { (make ) in
+        maskview.snp_makeConstraints { (make ) -> Void in
             make.top.equalTo(self)
             make.left.equalTo(self)
             make.right.equalTo(self)
@@ -161,7 +161,6 @@ class WYVisitorView: UIView {
         let loginBtn = UIButton(textColour: UIColor.orange, fontSize: 14)
         loginBtn.setTitle("登录", for: UIControlState.normal)
         loginBtn.setBackgroundImage(#imageLiteral(resourceName: "common_button_white"), for: UIControlState.normal)
-        
         return loginBtn
     }()
 

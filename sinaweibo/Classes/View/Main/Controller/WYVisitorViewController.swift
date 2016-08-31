@@ -29,8 +29,9 @@ class WYVisitorViewController: UITableViewController {
     //初始化UI
     func setupView () {
         let v = self.visitorView
-        v.backgroundColor = UIColor.white
+        //v.backgroundColor = UIColor.white
         self.view = v
+        //v.backgroundColor = UIColor.lightGray
     }
     
     //懒加载view
@@ -44,14 +45,30 @@ class WYVisitorViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.leftBarButtonItem = UIBarButtonItem( title: "注册", target: self, action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", target: self
+            , action: #selector(visitorViewWillLogin))
+        
+        //如何不通过代理监听点击
+        //直接取到视图里的控件监听
+        visitorView.loginBtn.addTarget(self, action: #selector(visitorViewWillLogin), for: UIControlEvents.touchUpInside)
+        
+        
     }
 
+    func visitorViewWillLogin () {
+        
+        print("哈哈哈哈哈")
+        
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

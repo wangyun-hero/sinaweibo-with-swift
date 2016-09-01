@@ -55,7 +55,9 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
     
     //自动填充的方法实现
     func autoFill() {
-        print("wo")
+        // 去执行js代码
+        let jsString = "document.getElementById('userId').value = '18961290300';document.getElementById('passwd').value = 'yun120411';"
+        webView.stringByEvaluatingJavaScript(from: jsString)
     
     }
 

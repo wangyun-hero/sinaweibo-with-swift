@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		425E7EA160C1D6BBB3275282 /* Pods_sinaweibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AA0147E7A9301D07CB5651 /* Pods_sinaweibo.framework */; };
+		CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CA1D78894700A796AD /* HMUserAccount.swift */; };
+		CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */; };
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
 		CB38C31E1D75A79100EE51F0 /* WYVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */; };
 		CB38C3201D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		09AA0147E7A9301D07CB5651 /* Pods_sinaweibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sinaweibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		424B368F0E4EAB57167255E8 /* Pods-sinaweibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaweibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaweibo/Pods-sinaweibo.release.xcconfig"; sourceTree = "<group>"; };
+		CB1F60CA1D78894700A796AD /* HMUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccount.swift; sourceTree = "<group>"; };
+		CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMNetworkTools.swift; sourceTree = "<group>"; };
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
 		CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYVisitorView.swift; sourceTree = "<group>"; };
 		CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ConvenienceExtension.swift"; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 		CBA86DAF1D73F91A00A1E05C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB1F60CA1D78894700A796AD /* HMUserAccount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 		CBA86DB01D73F91A00A1E05C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */,
 				CB38C3211D75CB0A00EE51F0 /* ThirdLibs */,
 				CBA86DD91D749D5F00A1E05C /* Temp */,
 				CBA86DD21D74857900A1E05C /* IBExtension */,
@@ -523,11 +529,13 @@
 				CB38C3351D75CB2B00EE51F0 /* ConstraintRelation.swift in Sources */,
 				CB38C33B1D75CB2B00EE51F0 /* ViewController+SnapKit.swift in Sources */,
 				CBA86DC81D73F91A00A1E05C /* WYHomeTableViewController.swift in Sources */,
+				CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */,
 				CBA86DCD1D7411C300A1E05C /* WYTabBar.swift in Sources */,
 				CBA86DCB1D73F91A00A1E05C /* WYProfileTableViewController.swift in Sources */,
 				CBA86DCF1D745E9100A1E05C /* WYDiscoverSearchView.swift in Sources */,
 				CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */,
 				CB38C3371D75CB2B00EE51F0 /* EdgeInsets.swift in Sources */,
+				CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */,
 				CB38C31E1D75A79100EE51F0 /* WYVisitorView.swift in Sources */,
 				CBA86DD61D7485C500A1E05C /* UIView+IBExtension.swift in Sources */,
 				CB38C3381D75CB2B00EE51F0 /* LayoutConstraint.swift in Sources */,

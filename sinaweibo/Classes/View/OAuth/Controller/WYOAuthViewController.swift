@@ -61,6 +61,79 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
     
     }
 
+    //获取token的方法
+    func loadAccessToken (code:String) {
+        //请求地址
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        
+        /*
+         client_id	true	string	申请应用时分配的AppKey。
+         client_secret	true	string	申请应用时分配的AppSecret。
+         grant_type	true	string	请求的类型，填写authorization_code
+         
+         grant_type为authorization_code时
+         必选	类型及范围	说明
+         code	true	string	调用authorize获得的code值。
+         redirect_uri	true	string	回调地址，需需与注册应用里的回调地址一致。
+         */
+
+        
+        //请求的参数
+        let params = [
+            "client_id": WB_APPKEY,
+            "client_secret": WB_SECRET,
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": WB_REDIRECT_URI
+        ]
+
+        //使用afn发起请求
+        HMNetworkTools.sharedTools.request(method: .Post, urlString: urlString, parameters: params) { (response, error) in
+            
+            if response == nil || error != nil {
+                print("请求错误\(error)")
+                return
+            }
+            //将字典转模型
+            let account = HMUserAccount(dict: response! as! [String:Any])
+            
+            // 1. 获取到文件路径
+            let file = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as NSString).appendingPathComponent("userAccount.archive")
+            print(file)
+            // 2. 归档
+            NSKeyedArchiver.archiveRootObject(account, toFile: file)
+ 
+        }
+      
+    }
+    
+    
+    //request里面的url就是我们拼接的url
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        //如果url有值,那么我们去到地址字符串并且判断
+        if let u = request.url {
+            //去到url地址的字符串
+            let urlString = u.absoluteString
+            // 如果不是以回调页开头,那么我们就加载
+            if !urlString.hasPrefix(WB_REDIRECT_URI) {
+                return true
+            }
+        }
+        //代码走到这里代表是回调页开头
+        if let query = request.url?.query {
+            //取到code
+            //print(query)
+            let code = query.substring(from: "code=".endIndex)
+            print(code)
+            
+            //将我们获取的code传入获取AccessToken的方法,获取AccessToken
+            loadAccessToken(code: code)
+        }
+        
+        return true
+    }
+    
+    
     //以下三个方法是webview的代理方法,需要遵守代理,设置代理属性
     //用SVProgressHUD设置加载的转圈
     //开始加载的时候

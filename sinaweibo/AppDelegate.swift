@@ -15,6 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //测试解档
+        // 解档
+        let file = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as NSString).appendingPathComponent("userAccount.archive")
+        let account = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? HMUserAccount
+        print(account)
+        
+        
+        
         //创建window
         window = UIWindow(frame: UIScreen.main.bounds)
         

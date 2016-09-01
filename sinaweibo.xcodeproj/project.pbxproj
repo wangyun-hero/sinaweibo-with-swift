@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		425E7EA160C1D6BBB3275282 /* Pods_sinaweibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AA0147E7A9301D07CB5651 /* Pods_sinaweibo.framework */; };
+		CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB731D78AEB40048DA10 /* HMUserAccountViewModel.swift */; };
 		CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CA1D78894700A796AD /* HMUserAccount.swift */; };
 		CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */; };
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		09AA0147E7A9301D07CB5651 /* Pods_sinaweibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sinaweibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		424B368F0E4EAB57167255E8 /* Pods-sinaweibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sinaweibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-sinaweibo/Pods-sinaweibo.release.xcconfig"; sourceTree = "<group>"; };
+		CB06EB731D78AEB40048DA10 /* HMUserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccountViewModel.swift; sourceTree = "<group>"; };
 		CB1F60CA1D78894700A796AD /* HMUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccount.swift; sourceTree = "<group>"; };
 		CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMNetworkTools.swift; sourceTree = "<group>"; };
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		CBA86DC61D73F91A00A1E05C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB06EB731D78AEB40048DA10 /* HMUserAccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				CB38C3361D75CB2B00EE51F0 /* Debugging.swift in Sources */,
 				CB38C3331D75CB2B00EE51F0 /* ConstraintItem.swift in Sources */,
 				CBA86DC91D73F91A00A1E05C /* WYTabBarController.swift in Sources */,
+				CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */,
 				CBA86DC71D73F91A00A1E05C /* WYDiscoverTableViewController.swift in Sources */,
 				CBA86DDD1D74ABE400A1E05C /* WYNavigationController.swift in Sources */,
 				CBA86DDF1D751CCF00A1E05C /* WYVisitorViewController.swift in Sources */,

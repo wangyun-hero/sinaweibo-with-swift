@@ -9,9 +9,9 @@
 import UIKit
 import SVProgressHUD
 
-private let WB_APPKEY = "2367628679"
-private let WB_SECRET = "7c6e35f40cf8dde1131ac63e35e94305"
-private let WB_REDIRECT_URI = "http://www.itheima.com/"
+ let WB_APPKEY = "2367628679"
+ let WB_SECRET = "7c6e35f40cf8dde1131ac63e35e94305"
+ let WB_REDIRECT_URI = "http://www.itheima.com/"
 
 class WYOAuthViewController: UIViewController , UIWebViewDelegate{
 
@@ -61,51 +61,92 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
     
     }
 
-    //获取token的方法
-    func loadAccessToken (code:String) {
-        //请求地址
-        let urlString = "https://api.weibo.com/oauth2/access_token"
-        
-        /*
-         client_id	true	string	申请应用时分配的AppKey。
-         client_secret	true	string	申请应用时分配的AppSecret。
-         grant_type	true	string	请求的类型，填写authorization_code
-         
-         grant_type为authorization_code时
-         必选	类型及范围	说明
-         code	true	string	调用authorize获得的code值。
-         redirect_uri	true	string	回调地址，需需与注册应用里的回调地址一致。
-         */
-
-        
-        //请求的参数
-        let params = [
-            "client_id": WB_APPKEY,
-            "client_secret": WB_SECRET,
-            "grant_type": "authorization_code",
-            "code": code,
-            "redirect_uri": WB_REDIRECT_URI
-        ]
-
-        //使用afn发起请求
-        HMNetworkTools.sharedTools.request(method: .Post, urlString: urlString, parameters: params) { (response, error) in
-            
-            if response == nil || error != nil {
-                print("请求错误\(error)")
-                return
-            }
-            //将字典转模型
-            let account = HMUserAccount(dict: response! as! [String:Any])
-            
-            // 1. 获取到文件路径
-            let file = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as NSString).appendingPathComponent("userAccount.archive")
-            print(file)
-            // 2. 归档
-            NSKeyedArchiver.archiveRootObject(account, toFile: file)
- 
-        }
-      
-    }
+//    //获取token的方法
+//    func loadAccessToken (code:String) {
+//        //请求地址
+//        let urlString = "https://api.weibo.com/oauth2/access_token"
+//        
+//        /*
+//         client_id	true	string	申请应用时分配的AppKey。
+//         client_secret	true	string	申请应用时分配的AppSecret。
+//         grant_type	true	string	请求的类型，填写authorization_code
+//         
+//         grant_type为authorization_code时
+//         必选	类型及范围	说明
+//         code	true	string	调用authorize获得的code值。
+//         redirect_uri	true	string	回调地址，需需与注册应用里的回调地址一致。
+//         */
+//
+//        
+//        //请求的参数
+//        let params = [
+//            "client_id": WB_APPKEY,
+//            "client_secret": WB_SECRET,
+//            "grant_type": "authorization_code",
+//            "code": code,
+//            "redirect_uri": WB_REDIRECT_URI
+//        ]
+//
+//        //使用afn发起请求
+//        HMNetworkTools.sharedTools.request(method: .Post, urlString: urlString, parameters: params) { (response, error) in
+//            
+//            if response == nil || error != nil {
+//                print("请求错误\(error)")
+//                return
+//            }
+//            //将字典转模型
+//            let account = HMUserAccount(dict: response! as! [String:Any])
+//            
+//            // 代码走到这一步，就代表accessToken获取完成
+//            // 接下来要去获取用户的个人信息,比如说头像，头像要欢迎页面要使用
+//            self.loadUserInfo(account: account)
+//
+// 
+//        }
+//      
+//    }
+//    
+//    //获取用户的信息
+//    func loadUserInfo (account : HMUserAccount) {
+//        //定义请求地址,根据微博的API来
+//        let URLString = "https://api.weibo.com/2/users/show.json"
+//        //定义请求参数
+//        let params = [
+//            "access_token": (account.access_token ?? ""),
+//            "uid": (account.uid ?? "")
+//        ]
+//        
+//        //发送请求
+//        HMNetworkTools.sharedTools.request(method: .Get, urlString: URLString, parameters: params) { (response, error) in
+//            if response == nil || error != nil {
+//                print("请求错误\(error )")
+//                return
+//            }
+//            //保存头像和昵称
+//            let dict = response! as! [String:Any]
+//            // 从字典中取出对应的值，设置到模型中
+//            account.name = dict["name"] as? String
+//            account.profile_image_url = dict["profile_image_url"] as? String
+//            
+//            //归档
+//            self.saveAccount(account: account)
+//        }
+//
+//        
+//    }
+//    
+//    //从上面抽出来的方法,保存用户的信息
+//    func saveAccount (account : HMUserAccount) {
+//        
+//        let file = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as NSString).appendingPathComponent("userAccount.archive")
+//        // 2. 归档
+//        NSKeyedArchiver.archiveRootObject(account, toFile: file)
+//
+//        
+//    }
+    
+    
+    
     
     
     //request里面的url就是我们拼接的url
@@ -127,7 +168,7 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
             print(code)
             
             //将我们获取的code传入获取AccessToken的方法,获取AccessToken
-            loadAccessToken(code: code)
+            HMUserAccountViewModel.sharedModel.loadAccessToken(code: code)
         }
         
         return true

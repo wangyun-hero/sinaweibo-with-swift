@@ -25,6 +25,12 @@ class HMUserAccount: NSObject ,NSCoding{
     var uid: String?
     
     
+    /// 用户的昵称
+    var name: String?
+    /// 用户的头像地址
+    var profile_image_url: String?
+    
+    
     //因为有声明周期并不能让我们知道具体声明时间过期,所以定义这个属性,可以直观的看到声明时候过期
     /// 过期日期
     var expiresDate: Date?
@@ -44,6 +50,9 @@ class HMUserAccount: NSObject ,NSCoding{
         access_token = decoder.decodeObject(forKey: "access_token") as? String
         uid = decoder.decodeObject(forKey: "uid") as? String
         expiresDate = decoder.decodeObject(forKey: "expiresDate") as? Date
+        name = decoder.decodeObject(forKey: "name") as? String
+        profile_image_url = decoder.decodeObject(forKey: "profile_image_url") as? String
+        
     }
     
     
@@ -55,7 +64,8 @@ class HMUserAccount: NSObject ,NSCoding{
         encoder.encode(access_token, forKey: "access_token")
         encoder.encode(uid, forKey: "uid")
         encoder.encode(expiresDate, forKey: "expiresDate")
-        
+        encoder.encode(name, forKey: "name")
+        encoder.encode(profile_image_url, forKey: "profile_image_url")
         
     }
 

@@ -14,13 +14,13 @@ class HMUserAccount: NSObject ,NSCoding{
     /// 访问令牌
     var access_token: String?
     /// 生命周期，多少秒之后就accessToken就不能使用了
-    var expires_in: TimeInterval = 0
-//    var expires_in: TimeInterval = 0 {
-//        didSet{
-//            // 过期时间 ＝ 当前时间 + expires_in
-//            expiresDate = Date(timeIntervalSinceNow: expires_in)
-//        }
-//    }
+//    var expires_in: TimeInterval = 0
+    var expires_in: TimeInterval = 0 {
+        didSet{
+            // 过期时间 ＝ 当前时间 + expires_in
+            expiresDate = Date(timeIntervalSinceNow: expires_in)
+        }
+    }
     /// 当前用户的id
     var uid: String?
     

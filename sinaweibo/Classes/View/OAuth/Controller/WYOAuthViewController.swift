@@ -168,10 +168,18 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
             print(code)
             
             //将我们获取的code传入获取AccessToken的方法,获取AccessToken
-            HMUserAccountViewModel.sharedModel.loadAccessToken(code: code)
+            HMUserAccountViewModel.sharedModel.loadAccessToken(code: code, completion: {(isSuccess) -> () in
+                
+                if isSuccess {
+                    // 登录成功的话，需要在这个地方切换界面、
+                    print("切换界面")
+                }else{
+                    print("登录失败")
+                }
+            })
         }
         
-        return true
+        return false
     }
     
     

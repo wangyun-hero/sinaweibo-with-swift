@@ -11,7 +11,7 @@ import UIKit
 class WYVisitorViewController: UITableViewController {
 
     //定义属性来记录用户是登录状态还是未登录
-    var userLogin = false
+    var userLogin = HMUserAccountViewModel.sharedModel.userLogon
     
     //重写loadview的方法,加载我们要显示的视图
     override func loadView() {
@@ -32,6 +32,16 @@ class WYVisitorViewController: UITableViewController {
         //v.backgroundColor = UIColor.white
         self.view = v
         //v.backgroundColor = UIColor.lightGray
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem( title: "注册", target: self, action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", target: self
+            , action: #selector(visitorViewWillLogin))
+        
+        //如何不通过代理监听点击
+        //直接取到视图里的控件监听
+        visitorView.loginBtn.addTarget(self, action: #selector(visitorViewWillLogin), for: UIControlEvents.touchUpInside)
     }
     
     //懒加载view
@@ -48,14 +58,6 @@ class WYVisitorViewController: UITableViewController {
         
         
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem( title: "注册", target: self, action: nil)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", target: self
-            , action: #selector(visitorViewWillLogin))
-        
-        //如何不通过代理监听点击
-        //直接取到视图里的控件监听
-        visitorView.loginBtn.addTarget(self, action: #selector(visitorViewWillLogin), for: UIControlEvents.touchUpInside)
         
         
     }

@@ -12,6 +12,7 @@
 		CB06EB761D7946A80048DA10 /* WYWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB751D7946A80048DA10 /* WYWelcomeViewController.swift */; };
 		CB06EB7A1D79CB800048DA10 /* WYCommonTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB791D79CB800048DA10 /* WYCommonTools.swift */; };
 		CB06EB7C1D79E2BA0048DA10 /* WYStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB7B1D79E2BA0048DA10 /* WYStatus.swift */; };
+		CB06EB7E1D79F3D60048DA10 /* WYStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */; };
 		CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CA1D78894700A796AD /* HMUserAccount.swift */; };
 		CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */; };
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
@@ -54,6 +55,7 @@
 		CB06EB751D7946A80048DA10 /* WYWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYWelcomeViewController.swift; sourceTree = "<group>"; };
 		CB06EB791D79CB800048DA10 /* WYCommonTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYCommonTools.swift; sourceTree = "<group>"; };
 		CB06EB7B1D79E2BA0048DA10 /* WYStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatus.swift; sourceTree = "<group>"; };
+		CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusCell.swift; sourceTree = "<group>"; };
 		CB1F60CA1D78894700A796AD /* HMUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccount.swift; sourceTree = "<group>"; };
 		CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMNetworkTools.swift; sourceTree = "<group>"; };
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 		CBA86DB91D73F91A00A1E05C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				CBA86DDB1D749D7400A1E05C /* WYTempViewController.swift in Sources */,
 				CB38C3361D75CB2B00EE51F0 /* Debugging.swift in Sources */,
 				CB38C3331D75CB2B00EE51F0 /* ConstraintItem.swift in Sources */,
+				CB06EB7E1D79F3D60048DA10 /* WYStatusCell.swift in Sources */,
 				CBA86DC91D73F91A00A1E05C /* WYTabBarController.swift in Sources */,
 				CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */,
 				CBA86DC71D73F91A00A1E05C /* WYDiscoverTableViewController.swift in Sources */,

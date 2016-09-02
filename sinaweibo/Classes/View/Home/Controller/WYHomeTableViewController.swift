@@ -38,7 +38,7 @@ class WYHomeTableViewController: WYVisitorViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendsearch", target: nil, action: nil)
     
     //注册cell
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    tableView.register(WYStatusCell.self, forCellReuseIdentifier: "cell")
     
     
     //点击右边item跳转
@@ -107,11 +107,11 @@ extension WYHomeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WYStatusCell
        //取到对应位置的模型
         let model = statusArray![indexPath.row]
         //设置数据
-        cell.textLabel?.text = model.text
+        cell.status = model
         
         return cell
     }

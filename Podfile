@@ -10,5 +10,6 @@ target 'sinaweibo' do
 pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
+pod 'YYModel'
 
 end

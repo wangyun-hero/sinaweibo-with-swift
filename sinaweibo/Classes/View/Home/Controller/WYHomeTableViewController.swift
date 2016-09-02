@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import YYModel
 class WYHomeTableViewController: WYVisitorViewController {
 
+    //用全局属性记录模型数组
+    var statusArray: [WYStatus]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,9 +21,8 @@ class WYHomeTableViewController: WYVisitorViewController {
             return
         }
         
-        
-        
        setupUI()
+       loadData()
         
     }
     
@@ -35,10 +37,48 @@ class WYHomeTableViewController: WYVisitorViewController {
     
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendsearch", target: nil, action: nil)
     
+    //注册cell
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    
+    
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))
     
     }
+    
+    //加载数据
+    func loadData () {
+        //url地址
+       let urlString = "https://api.weibo.com/2/statuses/friends_timeline.json"
+        //请求的参数
+        let params = [
+            "access_token": HMUserAccountViewModel.sharedModel.accessToken ?? ""
+        ]
+
+        //自己封装的网络请求工具类发起请求
+        HMNetworkTools.sharedTools.request(method: .Get, urlString: urlString, parameters: params) { (response, error) in
+            if (response == nil || error != nil) {
+                print("请求错误\(error)")
+                return
+            }
+            
+            print(response)
+            //对数据进行解析
+            //
+            guard let dictArray = (response! as! [String: Any])["statuses"] as? [[String: Any]] else {
+                return
+            }
+            //字典转模型
+            let modelArray = NSArray.yy_modelArray(with: WYStatus.classForCoder(), json: dictArray) as? [WYStatus]
+            //赋值给全局属性
+            self.statusArray = modelArray
+            //刷新数据源
+            self.tableView.reloadData()
+        }
+     
+    }
+    
+    
     
     func pop(){
         print(#function)
@@ -53,77 +93,30 @@ class WYHomeTableViewController: WYVisitorViewController {
        _ = navigationController?.popViewController(animated: true)
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+}
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+//数据源方法
+extension WYHomeTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return statusArray?.count ?? 0
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+       //取到对应位置的模型
+        let model = statusArray![indexPath.row]
+        //设置数据
+        cell.textLabel?.text = model.text
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }
+
+
+

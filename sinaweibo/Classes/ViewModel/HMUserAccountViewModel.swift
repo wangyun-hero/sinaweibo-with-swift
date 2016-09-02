@@ -13,6 +13,10 @@ class HMUserAccountViewModel: NSObject {
     // 当前 viewModel 对应的模型
     var account: HMUserAccount?
     
+    var accessToken: String? {
+        return account?.access_token
+    }
+    
     //单例
     static let sharedModel: HMUserAccountViewModel = HMUserAccountViewModel()
     

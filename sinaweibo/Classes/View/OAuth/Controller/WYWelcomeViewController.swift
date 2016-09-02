@@ -57,6 +57,9 @@ class WYWelcomeViewController: UIViewController {
                 UIView.animate(withDuration: 1, animations: {
                     self.messageLabel.alpha = 1
                     }, completion: { (_) in
+                       //在这里要切换根控制器,一般把切换根控制器的操作方法appdelegata中,我们用通知告诉其切换根控制器
+                        NotificationCenter.default.post(name: NSNotification.Name( HMChangeRootVCNotification), object: nil)
+                        
                         
                 })
         }

@@ -172,7 +172,8 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
                 
                 if isSuccess {
                     // 登录成功的话，需要在这个地方切换界面、
-                    
+                    //发送通知让appdelegata切换控制器
+                    NotificationCenter.default.post(name: NSNotification.Name( HMChangeRootVCNotification), object: self)
                 }else{
                     print("登录失败")
                 }

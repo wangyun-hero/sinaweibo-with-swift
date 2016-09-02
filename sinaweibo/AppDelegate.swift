@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let account = NSKeyedUnarchiver.unarchiveObject(withFile: file) as? HMUserAccount
         print(account)
         
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(changeVC(noti:)), name: NSNotification.Name(HMChangeRootVCNotification), object: nil)
         
         
         //创建window
@@ -29,13 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //设置根控制器
 //        window?.rootViewController = WYTabBarController()
         
-        window?.rootViewController = WYWelcomeViewController()
+        window?.rootViewController = HMUserAccountViewModel.sharedModel.userLogon ? WYWelcomeViewController() : WYTabBarController()
         
         //显示
         window?.makeKeyAndVisible()
         
         
         return true
+    }
+    
+    func changeVC(noti:Notification) {
+        //如果不是空,代表是OAuth发的通知
+        if noti.object != nil {
+            window?.rootViewController = WYWelcomeViewController()
+        }
+        else
+        {
+            //欢迎页面过后跳转到主界面
+            window?.rootViewController = WYTabBarController()
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

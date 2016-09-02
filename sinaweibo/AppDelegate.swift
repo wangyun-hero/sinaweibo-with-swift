@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         //设置根控制器
-        window?.rootViewController = WYTabBarController()
+//        window?.rootViewController = WYTabBarController()
+        
+        window?.rootViewController = WYWelcomeViewController()
         
         //显示
         window?.makeKeyAndVisible()

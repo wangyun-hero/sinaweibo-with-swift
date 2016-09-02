@@ -172,7 +172,7 @@ class WYOAuthViewController: UIViewController , UIWebViewDelegate{
                 
                 if isSuccess {
                     // 登录成功的话，需要在这个地方切换界面、
-                    print("切换界面")
+                    
                 }else{
                     print("登录失败")
                 }

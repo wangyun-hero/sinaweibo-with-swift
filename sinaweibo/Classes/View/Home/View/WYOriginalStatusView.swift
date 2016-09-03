@@ -13,6 +13,8 @@ class WYOriginalStatusView: UIView {
     var statusViewModel : WYStatusViewModel? {
         
         didSet{
+            //时间与来源暂时不处理
+            
             iconView.sd_setImage(with: URL(string:statusViewModel?.status?.user?.profile_image_url ?? ""), placeholderImage: #imageLiteral(resourceName: "avatar_default"))
             
             nameLabel.text = statusViewModel?.status?.user?.name

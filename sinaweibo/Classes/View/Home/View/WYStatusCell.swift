@@ -8,6 +8,9 @@
 
 import UIKit
 
+// cell里面共有的间距
+let HMStatusCellMargin: CGFloat = 10
+
 class WYStatusCell: UITableViewCell {
 
 //    var status : WYStatus? {
@@ -17,14 +20,16 @@ class WYStatusCell: UITableViewCell {
 //        
 //    }
     
+//    var statusViewmodel : WYStatusViewModel? {
+//        didSet {
+//            nameLabel.text = statusViewmodel?.status?.text
+//        }
+//    }
+    
     var statusViewmodel : WYStatusViewModel? {
-        didSet {
-            nameLabel.text = statusViewmodel?.status?.text
-            
-        }
+        originalView
         
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,22 +52,31 @@ class WYStatusCell: UITableViewCell {
     
     func setupUI () {
         //添加控件
-       contentView.addSubview(nameLabel)
+        contentView.addSubview(originalView)
+        
         //添加约束
-        nameLabel.snp_makeConstraints { (make ) in
-            make.centerY.equalTo(contentView)
-            make.left.equalTo(contentView).offset(10)
+        originalView.snp_makeConstraints { (make ) in
+            make.left.top.right.equalTo(contentView)
+            make.height.equalTo(contentView)
         }
+        
+        
+        
+        
+//        //添加控件
+//       contentView.addSubview(nameLabel)
+//        //添加约束
+//        nameLabel.snp_makeConstraints { (make ) in
+//            make.centerY.equalTo(contentView)
+//            make.left.equalTo(contentView).offset(10)
+//        }
     }
     
-    //懒加载nameLabel
-    lazy var nameLabel :UILabel = {
+    //懒加载原创的view
+    // 当前cell里面管理三个子控件：原创微博的视图，转发微博的视图，底部的工具条
+ private  lazy var originalView :WYOriginalStatusView = WYOriginalStatusView()
         
-        let nameLabel = UILabel(textColour: UIColor.darkGray, fontSize: 14)
-        
-        return nameLabel
-    }()
-
+      
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

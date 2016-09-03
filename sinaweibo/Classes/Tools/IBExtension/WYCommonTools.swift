@@ -9,3 +9,6 @@
 import UIKit
 
 let HMChangeRootVCNotification = "HMChangeRootVCNotification"
+// 抽取屏幕宽高
+let HMScreenW = UIScreen.main.bounds.width
+let HMScreenH = UIScreen.main.bounds.height

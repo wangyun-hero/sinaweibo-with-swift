@@ -41,7 +41,8 @@ class WYHomeTableViewController: WYVisitorViewController {
     
     //注册cell
     tableView.register(WYStatusCell.self, forCellReuseIdentifier: "cell")
-    
+    //先把行高写死
+    tableView.rowHeight = 80
     
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))

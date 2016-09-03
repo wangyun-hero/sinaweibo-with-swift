@@ -10,7 +10,22 @@ import UIKit
 
 class WYOriginalStatusView: UIView {
     
-    var statusViewModel : WYStatusViewModel
+    var statusViewModel : WYStatusViewModel? {
+        
+        didSet{
+            iconView.sd_setImage(with: URL(string:statusViewModel?.status?.user?.profile_image_url ?? ""), placeholderImage: #imageLiteral(resourceName: "avatar_default"))
+            
+            nameLabel.text = statusViewModel?.status?.user?.name
+            
+           // memberIconView
+            memberIconView.image = statusViewModel?.memberImage
+            
+            avatarView.image = statusViewModel?.avatarImage
+            
+            contentLabel.text = statusViewModel?.status?.text
+        }
+        
+    }
 
    override init(frame: CGRect) {
         super.init(frame: frame)

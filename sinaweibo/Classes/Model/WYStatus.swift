@@ -18,5 +18,7 @@ class WYStatus: NSObject {
     var text: String?
     /// 微博的来源
     var source: String?
+    /// 当前微博的作者信息
+    var user: WYUser?
    
 }

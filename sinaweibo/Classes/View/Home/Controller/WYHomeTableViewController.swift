@@ -9,9 +9,11 @@
 import UIKit
 import YYModel
 class WYHomeTableViewController: WYVisitorViewController {
+    
+    lazy var homeViewModel: WYHomeViewModel = WYHomeViewModel()
 
     //用全局属性记录模型数组
-    var statusArray: [WYStatus]?
+    //var statusArray: [WYStatus]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,37 +48,55 @@ class WYHomeTableViewController: WYVisitorViewController {
     
     }
     
-    //加载数据
     func loadData () {
-        //url地址
-       let urlString = "https://api.weibo.com/2/statuses/friends_timeline.json"
-        //请求的参数
-        let params = [
-            "access_token": HMUserAccountViewModel.sharedModel.accessToken ?? ""
-        ]
-
-        //自己封装的网络请求工具类发起请求
-        HMNetworkTools.sharedTools.request(method: .Get, urlString: urlString, parameters: params) { (response, error) in
-            if (response == nil || error != nil) {
-                print("请求错误\(error)")
-                return
+        homeViewModel.loadData { (isSuccess) in
+            if isSuccess  {
+                //刷新数据
+                self.tableView.reloadData()
+                
+            }else
+            {
+                print("加载错误")
             }
-            
-            print(response)
-            //对数据进行解析
-            //
-            guard let dictArray = (response! as! [String: Any])["statuses"] as? [[String: Any]] else {
-                return
-            }
-            //字典转模型
-            let modelArray = NSArray.yy_modelArray(with: WYStatus.classForCoder(), json: dictArray) as? [WYStatus]
-            //赋值给全局属性
-            self.statusArray = modelArray
-            //刷新数据源
-            self.tableView.reloadData()
         }
-     
+        
+        
+        
+        
+        
     }
+    
+//    //加载数据
+//    func loadData () {
+//        //url地址
+//       let urlString = "https://api.weibo.com/2/statuses/friends_timeline.json"
+//        //请求的参数
+//        let params = [
+//            "access_token": HMUserAccountViewModel.sharedModel.accessToken ?? ""
+//        ]
+//
+//        //自己封装的网络请求工具类发起请求
+//        HMNetworkTools.sharedTools.request(method: .Get, urlString: urlString, parameters: params) { (response, error) in
+//            if (response == nil || error != nil) {
+//                print("请求错误\(error)")
+//                return
+//            }
+//            
+//            print(response)
+//            //对数据进行解析
+//            //
+//            guard let dictArray = (response! as! [String: Any])["statuses"] as? [[String: Any]] else {
+//                return
+//            }
+//            //字典转模型
+//            let modelArray = NSArray.yy_modelArray(with: WYStatus.classForCoder(), json: dictArray) as? [WYStatus]
+//            //赋值给全局属性
+//            self.statusArray = modelArray
+//            //刷新数据源
+//            self.tableView.reloadData()
+//        }
+//     
+//    }
     
     
     
@@ -103,13 +123,13 @@ class WYHomeTableViewController: WYVisitorViewController {
 //数据源方法
 extension WYHomeTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusArray?.count ?? 0
+        return homeViewModel.statusArray?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WYStatusCell
        //取到对应位置的模型
-        let model = statusArray![indexPath.row]
+        let model = homeViewModel.statusArray![indexPath.row]
         //设置数据
         cell.status = model
         

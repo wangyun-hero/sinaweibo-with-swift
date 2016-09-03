@@ -54,15 +54,22 @@ class WYStatusCell: UITableViewCell {
     
     
     func setupUI () {
-        //添加控件
+        //添加原创微博的view
         contentView.addSubview(originalView)
+        //添加底部工具条
+        contentView.addSubview(statusToolBar)
         
         //添加约束
         originalView.snp_makeConstraints { (make ) in
             make.left.top.right.equalTo(contentView)
-            make.height.equalTo(contentView)
+            
         }
         
+        statusToolBar.snp_makeConstraints { (make) in
+            make.left.right.bottom.equalTo(contentView)
+            make.height.equalTo(35)
+            make.top.equalTo(originalView.snp_bottom)
+        }
         
         
         
@@ -78,8 +85,9 @@ class WYStatusCell: UITableViewCell {
     //懒加载原创的view
     // 当前cell里面管理三个子控件：原创微博的视图，转发微博的视图，底部的工具条
  private  lazy var originalView :WYOriginalStatusView = WYOriginalStatusView()
-        
-      
+    
+        lazy var statusToolBar : WYStatusToolBar = WYStatusToolBar()
+
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

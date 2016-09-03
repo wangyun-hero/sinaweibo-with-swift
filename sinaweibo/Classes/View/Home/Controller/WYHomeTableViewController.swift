@@ -131,7 +131,7 @@ extension WYHomeTableViewController {
        //取到对应位置的模型
         let model = homeViewModel.statusArray![indexPath.row]
         //设置数据
-        cell.status = model
+        cell.statusViewmodel = model
         
         return cell
     }

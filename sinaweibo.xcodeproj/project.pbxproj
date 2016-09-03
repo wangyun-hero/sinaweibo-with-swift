@@ -14,6 +14,7 @@
 		CB06EB7C1D79E2BA0048DA10 /* WYStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB7B1D79E2BA0048DA10 /* WYStatus.swift */; };
 		CB06EB7E1D79F3D60048DA10 /* WYStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */; };
 		CB06EB801D7A969F0048DA10 /* WYHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB7F1D7A969F0048DA10 /* WYHomeViewModel.swift */; };
+		CB06EB821D7AA9D30048DA10 /* WYStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06EB811D7AA9D30048DA10 /* WYStatusViewModel.swift */; };
 		CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CA1D78894700A796AD /* HMUserAccount.swift */; };
 		CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */; };
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
@@ -58,6 +59,7 @@
 		CB06EB7B1D79E2BA0048DA10 /* WYStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatus.swift; sourceTree = "<group>"; };
 		CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusCell.swift; sourceTree = "<group>"; };
 		CB06EB7F1D7A969F0048DA10 /* WYHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WYHomeViewModel.swift; path = ../Model/WYHomeViewModel.swift; sourceTree = "<group>"; };
+		CB06EB811D7AA9D30048DA10 /* WYStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusViewModel.swift; sourceTree = "<group>"; };
 		CB1F60CA1D78894700A796AD /* HMUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccount.swift; sourceTree = "<group>"; };
 		CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMNetworkTools.swift; sourceTree = "<group>"; };
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				CB06EB7F1D7A969F0048DA10 /* WYHomeViewModel.swift */,
 				CB06EB731D78AEB40048DA10 /* HMUserAccountViewModel.swift */,
+				CB06EB811D7AA9D30048DA10 /* WYStatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */,
 				CBA86DC71D73F91A00A1E05C /* WYDiscoverTableViewController.swift in Sources */,
 				CBA86DDD1D74ABE400A1E05C /* WYNavigationController.swift in Sources */,
+				CB06EB821D7AA9D30048DA10 /* WYStatusViewModel.swift in Sources */,
 				CBA86DDF1D751CCF00A1E05C /* WYVisitorViewController.swift in Sources */,
 				CBA86DD81D74905000A1E05C /* UIBarButtonItem+Extension.swift in Sources */,
 				CB38C3351D75CB2B00EE51F0 /* ConstraintRelation.swift in Sources */,

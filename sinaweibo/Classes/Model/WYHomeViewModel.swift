@@ -10,7 +10,7 @@ import UIKit
 
 class WYHomeViewModel: NSObject {
 
-    var statusArray: [WYStatus]? 
+    var statusArray: [WYStatusViewModel]?
     
     //加载数据
     func loadData (completion:@escaping (Bool) -> ()) {
@@ -37,8 +37,18 @@ class WYHomeViewModel: NSObject {
             }
             //字典转模型
             let modelArray = NSArray.yy_modelArray(with: WYStatus.classForCoder(), json: dictArray) as? [WYStatus]
+            
+            //定义一个WYStatusViewModel数组
+            var tempArray = [WYStatusViewModel]()
+            //循环将status存入单个WYStatusViewModel,然后就有一个WYStatusViewModel数组
+            for status in modelArray! {
+                let viewModel = WYStatusViewModel()
+                viewModel.status = status
+                tempArray.append(viewModel)
+            }
+            
             //赋值给全局属性
-            self.statusArray = modelArray
+            self.statusArray = tempArray
             //刷新数据源
             //self.tableView.reloadData()
             completion(true)

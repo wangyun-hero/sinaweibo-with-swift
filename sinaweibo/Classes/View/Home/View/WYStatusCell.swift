@@ -10,9 +10,17 @@ import UIKit
 
 class WYStatusCell: UITableViewCell {
 
-    var status : WYStatus? {
-        didSet{
-            nameLabel.text = status?.text
+//    var status : WYStatus? {
+//        didSet{
+//            nameLabel.text = status?.text
+//        }
+//        
+//    }
+    
+    var statusViewmodel : WYStatusViewModel? {
+        didSet {
+            nameLabel.text = statusViewmodel?.status?.text
+            
         }
         
     }

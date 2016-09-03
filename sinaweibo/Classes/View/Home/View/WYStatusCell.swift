@@ -30,6 +30,7 @@ class WYStatusCell: UITableViewCell {
         didSet {
             //当控制器给cell设置数据的时候,就将数据传递给originalview.然后可以设置给子视图
             originalView.statusViewModel = statusViewmodel
+            statusToolBar.statusViewModel = statusViewmodel
         }
         
     }

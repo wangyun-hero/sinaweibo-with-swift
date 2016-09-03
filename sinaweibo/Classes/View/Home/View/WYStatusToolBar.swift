@@ -9,11 +9,22 @@
 import UIKit
 
 class WYStatusToolBar: UIView {
-
+    
     var retweetButton: UIButton!
     var commentButton: UIButton!
     var unlikeButton: UIButton!
 
+    var statusViewModel : WYStatusViewModel? {
+        
+        didSet {
+            // 设置三个按钮的数据
+            retweetButton.setTitle(statusViewModel?.reposts_count, for: UIControlState.normal)
+            commentButton.setTitle(statusViewModel?.comments_count, for: UIControlState.normal)
+            unlikeButton.setTitle(statusViewModel?.attitudes_count, for: UIControlState.normal)
+        }
+  
+    }
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)

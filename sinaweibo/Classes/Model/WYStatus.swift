@@ -20,5 +20,11 @@ class WYStatus: NSObject {
     var source: String?
     /// 当前微博的作者信息
     var user: WYUser?
-   
+    /// 转发数
+    var reposts_count: Int = 0
+    /// 评论数
+    var comments_count: Int = 0
+    /// 表态数
+    var attitudes_count: Int = 0
+
 }

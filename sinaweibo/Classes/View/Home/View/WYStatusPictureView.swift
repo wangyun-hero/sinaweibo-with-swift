@@ -8,14 +8,23 @@
 
 import UIKit
 
+let itemMargin: CGFloat = 5
+// 确定每一个条目的宽高
+let itemWH = (HMScreenW - 2 * HMStatusCellMargin - 2 * itemMargin) / 3
+
 class WYStatusPictureView: UICollectionView {
 
+    //ID
+    let WYPictureViewCell = "cell"
+    
     var pic_urls: [WYStatusPictureInfo]? {
         
         didSet {
             self.snp_updateConstraints { (make ) in
                 make.size.equalTo(calcSize(count: pic_urls?.count ?? 0))
             }
+            //刷新数据
+            self.reloadData()
         }
         
     }
@@ -32,14 +41,21 @@ class WYStatusPictureView: UICollectionView {
     
     func setupUI () {
         backgroundColor = UIColor.red
+        //注册cell
+        self.register(WYPicturViewCell.self, forCellWithReuseIdentifier: WYPictureViewCell)
+        //创建流水布局
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        // 自己成为自己的数据源
+        self.dataSource = self
+        //cell的大小
+        layout.itemSize = CGSize(width: itemWH, height: itemWH)
+        //间距
+        layout.minimumLineSpacing = itemMargin
+        layout.minimumInteritemSpacing = itemMargin
     }
     
 
     private func calcSize(count: Int) -> CGSize {
-        
-        let itemMargin: CGFloat = 5
-        // 确定每一个条目的宽高
-        let itemWH = (HMScreenW - 2 * HMStatusCellMargin - 2 * itemMargin) / 3
         
         // 要确定有多少列
         var col = count > 3 ? 3 : count
@@ -60,3 +76,30 @@ class WYStatusPictureView: UICollectionView {
     }
 
 }
+
+extension WYStatusPictureView : UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pic_urls?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WYPictureViewCell, for: indexPath) as! WYPicturViewCell
+        //取到对应位置的模型
+        let model = pic_urls![indexPath.item]
+        //设置数据
+        cell.pictureInfo = model
+        
+        return cell
+    }
+    
+}
+
+
+    
+    
+    
+    
+    
+

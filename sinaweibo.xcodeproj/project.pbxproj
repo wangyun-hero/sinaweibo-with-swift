@@ -24,6 +24,7 @@
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
 		CB3682D21D7C37D200F9493E /* WYStatusPictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3682D11D7C37D200F9493E /* WYStatusPictureInfo.swift */; };
 		CB3682D41D7C3DF400F9493E /* WYStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */; };
+		CB3682D81D7C701F00F9493E /* WYPicturViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3682D71D7C701F00F9493E /* WYPicturViewCell.swift */; };
 		CB38C31E1D75A79100EE51F0 /* WYVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */; };
 		CB38C3201D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */; };
 		CB38C3301D75CB2B00EE51F0 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C3231D75CB2B00EE51F0 /* Constraint.swift */; };
@@ -75,6 +76,7 @@
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
 		CB3682D11D7C37D200F9493E /* WYStatusPictureInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusPictureInfo.swift; sourceTree = "<group>"; };
 		CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusPictureView.swift; sourceTree = "<group>"; };
+		CB3682D71D7C701F00F9493E /* WYPicturViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYPicturViewCell.swift; sourceTree = "<group>"; };
 		CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYVisitorView.swift; sourceTree = "<group>"; };
 		CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ConvenienceExtension.swift"; sourceTree = "<group>"; };
 		CB38C3231D75CB2B00EE51F0 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				CB06EB891D7B35140048DA10 /* WYRetweetStatusView.swift */,
 				CB06EB871D7B1D7E0048DA10 /* WYStatusToolBar.swift */,
 				CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */,
+				CB3682D71D7C701F00F9493E /* WYPicturViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				CB38C3301D75CB2B00EE51F0 /* Constraint.swift in Sources */,
 				CB38C3341D75CB2B00EE51F0 /* ConstraintMaker.swift in Sources */,
 				CB38C3391D75CB2B00EE51F0 /* SnapKit.swift in Sources */,
+				CB3682D81D7C701F00F9493E /* WYPicturViewCell.swift in Sources */,
 				CB38C3311D75CB2B00EE51F0 /* ConstraintAttributes.swift in Sources */,
 				CBA86DDB1D749D7400A1E05C /* WYTempViewController.swift in Sources */,
 				CB38C3361D75CB2B00EE51F0 /* Debugging.swift in Sources */,

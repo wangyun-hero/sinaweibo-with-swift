@@ -43,7 +43,7 @@ class WYHomeTableViewController: WYVisitorViewController {
     tableView.register(WYStatusCell.self, forCellReuseIdentifier: "cell")
     //行高自动计算
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 100
+    tableView.estimatedRowHeight = 500
     
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))

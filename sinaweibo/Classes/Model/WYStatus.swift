@@ -26,5 +26,8 @@ class WYStatus: NSObject {
     var comments_count: Int = 0
     /// 表态数
     var attitudes_count: Int = 0
+    
+    /// 转发微博
+    var retweeted_status: WYStatus?
 
 }

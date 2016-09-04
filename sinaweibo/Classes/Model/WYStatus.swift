@@ -29,5 +29,16 @@ class WYStatus: NSObject {
     
     /// 转发微博
     var retweeted_status: WYStatus?
-
+    
+    /// 配图的数据，是一个数组，需要告诉第三方框架里面装的是什么类型的数据  ,数组里面装的是字典,一个字典对应一个模型,所以这里其实是一个模型数组
+    var pic_urls: [WYStatusPictureInfo]?
+    
+    /// 告诉YYModel,pic_urls这个数组里面元素的类型是什么
+    /// 告诉 yymodel ，pic_urls这个数组里面的元素类型是什么
+    class func modelContainerPropertyGenericClass() -> ([String: Any]) {
+        return [
+            "pic_urls": WYStatusPictureInfo.self
+        ]
+    }
+ 
 }

@@ -22,6 +22,8 @@
 		CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CA1D78894700A796AD /* HMUserAccount.swift */; };
 		CB1F60CD1D78907C00A796AD /* HMNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */; };
 		CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */; };
+		CB3682D21D7C37D200F9493E /* WYStatusPictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3682D11D7C37D200F9493E /* WYStatusPictureInfo.swift */; };
+		CB3682D41D7C3DF400F9493E /* WYStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */; };
 		CB38C31E1D75A79100EE51F0 /* WYVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */; };
 		CB38C3201D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */; };
 		CB38C3301D75CB2B00EE51F0 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C3231D75CB2B00EE51F0 /* Constraint.swift */; };
@@ -71,6 +73,8 @@
 		CB1F60CA1D78894700A796AD /* HMUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserAccount.swift; sourceTree = "<group>"; };
 		CB1F60CC1D78907C00A796AD /* HMNetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMNetworkTools.swift; sourceTree = "<group>"; };
 		CB32010F1D7744310055C5D2 /* WYOAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYOAuthViewController.swift; sourceTree = "<group>"; };
+		CB3682D11D7C37D200F9493E /* WYStatusPictureInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusPictureInfo.swift; sourceTree = "<group>"; };
+		CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYStatusPictureView.swift; sourceTree = "<group>"; };
 		CB38C31D1D75A79100EE51F0 /* WYVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYVisitorView.swift; sourceTree = "<group>"; };
 		CB38C31F1D75AAE100EE51F0 /* UIView + ConvenienceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ConvenienceExtension.swift"; sourceTree = "<group>"; };
 		CB38C3231D75CB2B00EE51F0 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				CB1F60CA1D78894700A796AD /* HMUserAccount.swift */,
 				CB06EB7B1D79E2BA0048DA10 /* WYStatus.swift */,
 				CB06EB851D7B03C90048DA10 /* WYUser.swift */,
+				CB3682D11D7C37D200F9493E /* WYStatusPictureInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,8 +309,9 @@
 			children = (
 				CB06EB7D1D79F3D60048DA10 /* WYStatusCell.swift */,
 				CB06EB831D7AB3CE0048DA10 /* WYOriginalStatusView.swift */,
-				CB06EB871D7B1D7E0048DA10 /* WYStatusToolBar.swift */,
 				CB06EB891D7B35140048DA10 /* WYRetweetStatusView.swift */,
+				CB06EB871D7B1D7E0048DA10 /* WYStatusToolBar.swift */,
+				CB3682D31D7C3DF400F9493E /* WYStatusPictureView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				CB06EB7E1D79F3D60048DA10 /* WYStatusCell.swift in Sources */,
 				CBA86DC91D73F91A00A1E05C /* WYTabBarController.swift in Sources */,
 				CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */,
+				CB3682D21D7C37D200F9493E /* WYStatusPictureInfo.swift in Sources */,
 				CBA86DC71D73F91A00A1E05C /* WYDiscoverTableViewController.swift in Sources */,
 				CBA86DDD1D74ABE400A1E05C /* WYNavigationController.swift in Sources */,
 				CB06EB821D7AA9D30048DA10 /* WYStatusViewModel.swift in Sources */,
@@ -565,6 +572,7 @@
 				CB38C3351D75CB2B00EE51F0 /* ConstraintRelation.swift in Sources */,
 				CB06EB861D7B03C90048DA10 /* WYUser.swift in Sources */,
 				CB38C33B1D75CB2B00EE51F0 /* ViewController+SnapKit.swift in Sources */,
+				CB3682D41D7C3DF400F9493E /* WYStatusPictureView.swift in Sources */,
 				CB06EB7C1D79E2BA0048DA10 /* WYStatus.swift in Sources */,
 				CBA86DC81D73F91A00A1E05C /* WYHomeTableViewController.swift in Sources */,
 				CB1F60CB1D78894700A796AD /* HMUserAccount.swift in Sources */,

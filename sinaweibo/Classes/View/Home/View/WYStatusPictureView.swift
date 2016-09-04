@@ -40,7 +40,7 @@ class WYStatusPictureView: UICollectionView {
     }
     
     func setupUI () {
-        backgroundColor = UIColor.red
+//        backgroundColor = UIColor.red
         //注册cell
         self.register(WYPicturViewCell.self, forCellWithReuseIdentifier: WYPictureViewCell)
         //创建流水布局

@@ -79,6 +79,8 @@ class WYStatusCell: UITableViewCell {
     
     
     func setupUI () {
+        
+        contentView.backgroundColor = UIColor.lightGray
         //添加原创微博的view
         contentView.addSubview(originalView)
         //添加底部工具条
@@ -88,8 +90,8 @@ class WYStatusCell: UITableViewCell {
         
         //添加约束
         originalView.snp_makeConstraints { (make ) in
-            make.left.top.right.equalTo(contentView)
-            
+            make.left.right.equalTo(contentView)
+            make.top.equalTo(contentView).offset(HMStatusCellMargin)
         }
         
         retweetView.snp_makeConstraints { (make) in

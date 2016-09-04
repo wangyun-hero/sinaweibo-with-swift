@@ -71,7 +71,7 @@ class WYOriginalStatusView: UIView {
     
     
     func setupUI () {
-        
+        backgroundColor = UIColor.white
         // 1. 添加控件
         addSubview(iconView)
         addSubview(nameLabel)
@@ -168,8 +168,13 @@ class WYOriginalStatusView: UIView {
     }()
 
     //配图视图
-    private lazy var pictureView : WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
+//    private lazy var pictureView : WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var pictureView: WYStatusPictureView = {
+        let view = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.backgroundColor = self.backgroundColor
+        return view
+    }()
+
     
     
     

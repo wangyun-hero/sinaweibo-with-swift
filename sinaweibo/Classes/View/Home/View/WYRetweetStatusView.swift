@@ -15,7 +15,8 @@ class WYRetweetStatusView: UIView {
     var statusViewModel: WYStatusViewModel? {
         
         didSet {
-            contentLabel.text = statusViewModel?.status?.retweeted_status?.text
+            
+            contentLabel.text = statusViewModel?.retweetStautsText
             
             //卸载约束
             self.bottomCons?.uninstall()
@@ -92,6 +93,13 @@ class WYRetweetStatusView: UIView {
     }()
 
     //懒加载配图视图
-//    lazy var pictureView :WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero,collectionViewLayout:UICollectionViewFlowLayout())
-   lazy var pictureView :WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+//   lazy var pictureView :WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var pictureView: WYStatusPictureView = {
+        let view = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.backgroundColor = self.backgroundColor
+        return view
+    }()
+
+    
 }

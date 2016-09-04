@@ -45,6 +45,9 @@ class WYHomeTableViewController: WYVisitorViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 500
     
+    //取消分割线
+    tableView.separatorStyle = .none
+    
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))
     

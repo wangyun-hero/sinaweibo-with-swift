@@ -21,6 +21,8 @@ class WYStatusViewModel: NSObject
     var comments_count: String?
     // 静态数量的字符串
     var attitudes_count: String?
+    // 转发微博的内容
+    var retweetStautsText: String?
     
     
     var status: WYStatus?
@@ -56,7 +58,11 @@ class WYStatusViewModel: NSObject
             comments_count = caclCount(count: status?.comments_count ?? 0, defaultTitle: "评论")
             attitudes_count = caclCount(count: status?.attitudes_count ?? 0, defaultTitle: "赞")
 
-            
+            // 计算转发微博的内容
+            if let text = status?.retweeted_status?.text, let name = status?.retweeted_status?.user?.name{
+                retweetStautsText = "@\(name):\(text)"
+            }
+
             
         }
     }

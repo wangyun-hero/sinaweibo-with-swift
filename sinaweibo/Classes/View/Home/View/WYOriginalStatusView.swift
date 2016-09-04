@@ -10,6 +10,8 @@ import UIKit
 
 class WYOriginalStatusView: UIView {
     
+    var bottonCons : Constraint?
+    
     var statusViewModel : WYStatusViewModel? {
         
         didSet{
@@ -25,6 +27,33 @@ class WYOriginalStatusView: UIView {
             avatarView.image = statusViewModel?.avatarImage
             
             contentLabel.text = statusViewModel?.status?.text
+            
+            bottonCons?.uninstall()
+            
+            if let pic_urls = statusViewModel?.status?.pic_urls, pic_urls.count > 0 {
+                
+                // 代表有图片
+                pictureView.isHidden = false
+                // 要给配图控件设置数据
+                pictureView.pic_urls = pic_urls
+                // 要给配图控件设置数据
+                pictureView.pic_urls = pic_urls
+                self.snp_updateConstraints { (make) -> Void in
+                    bottonCons = make.bottom.equalTo(pictureView).offset(HMStatusCellMargin).constraint
+                }
+
+            }
+            else
+            {
+                // 代表没图片
+                pictureView.isHidden = true
+                
+                self.snp_updateConstraints { (make) -> Void in
+                    bottonCons = make.bottom.equalTo(contentLabel).offset(HMStatusCellMargin).constraint
+                }
+
+            }
+            
         }
         
     }
@@ -51,6 +80,7 @@ class WYOriginalStatusView: UIView {
         addSubview(sourceLabel)
         addSubview(avatarView)
         addSubview(contentLabel)
+        addSubview(pictureView)
         
         // 2. 添加约束
         iconView.snp_makeConstraints { (make) -> Void in
@@ -89,10 +119,16 @@ class WYOriginalStatusView: UIView {
             make.left.equalTo(iconView)
             make.top.equalTo(iconView.snp_bottom).offset(HMStatusCellMargin)
         }
+        
+        //约束
+        pictureView.snp_makeConstraints { (make ) in
+            make.top.equalTo(contentLabel.snp_bottom).offset(HMStatusCellMargin)
+            make.leading.equalTo(contentLabel)
+        }
 
         // 将原创微博的底部设置到内容的底部
         self.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(contentLabel).offset(HMStatusCellMargin)
+            make.bottom.equalTo(pictureView).offset(HMStatusCellMargin)
         }
 
         
@@ -131,7 +167,8 @@ class WYOriginalStatusView: UIView {
         return label
     }()
 
-    
+    //配图视图
+    private lazy var pictureView : WYStatusPictureView = WYStatusPictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     
     

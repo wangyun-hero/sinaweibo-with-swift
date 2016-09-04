@@ -13,6 +13,7 @@ class WYPicturViewCell: UICollectionViewCell {
     var pictureInfo : WYStatusPictureInfo? {
         
         didSet {
+            //设置图片
             imageView.sd_setImage(with: URL(string:pictureInfo?.thumbnail_pic ?? ""), placeholderImage: UIImage(named:"timeline_image_placeholder"))
         }
         

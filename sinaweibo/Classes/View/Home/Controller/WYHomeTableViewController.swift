@@ -57,7 +57,7 @@ class WYHomeTableViewController: WYVisitorViewController {
     }
     
     func loadData () {
-        homeViewModel.loadData { (isSuccess) in
+        homeViewModel.loadData(isPullUp: pullUpView.isAnimating) { (isSuccess) in
             if isSuccess  {
                 //刷新数据
                 self.tableView.reloadData()
@@ -66,13 +66,15 @@ class WYHomeTableViewController: WYVisitorViewController {
             {
                 print("加载错误")
             }
+            
+            // 结束刷新
+            self.pullUpView.stopAnimating()
+
         }
         
-        
-        
-        
-        
     }
+        
+     
     
 //    //加载数据
 //    func loadData () {
@@ -113,11 +115,11 @@ class WYHomeTableViewController: WYVisitorViewController {
 //        pullupView.backgroundColor = UIColor.orange
 //        return pullupView
 //    }()
-    private lazy var pullUpView: UIActivityIndicatorView = {
+     lazy var pullUpView: UIActivityIndicatorView = {
         let pullUpView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         // 设置颜色
         pullUpView.color = UIColor.black
-        pullUpView.startAnimating()
+        
         return pullUpView
     }()
 
@@ -159,6 +161,18 @@ extension WYHomeTableViewController {
         
         return cell
     }
+    
+    //代理方法
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //上拉刷新,为了避免用户重复的上拉.添加判断条件pullUpView.isAnimating == false
+        if indexPath.row == homeViewModel.statusArray!.count - 1 && pullUpView.isAnimating == false {
+            print("将要上啦刷新")
+            //启动
+            self.pullUpView.startAnimating()
+            self.loadData()
+        }
+    }
+    
   
 }
 

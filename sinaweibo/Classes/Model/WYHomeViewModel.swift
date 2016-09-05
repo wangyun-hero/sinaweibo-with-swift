@@ -13,11 +13,26 @@ class WYHomeViewModel: NSObject {
     var statusArray: [WYStatusViewModel]?
     
     //加载数据
-    func loadData (completion:@escaping (Bool) -> ()) {
+    func loadData (isPullUp : Bool, completion:@escaping (Bool) -> ()) {
         //url地址
         let urlString = "https://api.weibo.com/2/statuses/friends_timeline.json"
+        
+        // 默认maxId 为0
+        var maxId: Int64 = 0
+
+        if isPullUp {
+            
+            if let id = statusArray?.last?.status?.id {
+                maxId = id
+            }
+            
+        }
+        
+        
         //请求的参数
         let params = [
+            
+            "max_id":"\(maxId)",
             "access_token": HMUserAccountViewModel.sharedModel.accessToken ?? ""
         ]
         
@@ -47,8 +62,24 @@ class WYHomeViewModel: NSObject {
                 tempArray.append(viewModel)
             }
             
+            //初始化
+            if self.statusArray == nil {
+                self.statusArray = [WYStatusViewModel]()
+            }
+            
+            if isPullUp {
+                //是上拉刷新,要把数据品拼接到tempArray后面
+                self.statusArray = self.statusArray! + tempArray
+                
+            }else{
+                // 不是上拉加载-->就是下拉刷新
+                self.statusArray = tempArray + self.statusArray!
+            }
+            
+            
+            
             //赋值给全局属性
-            self.statusArray = tempArray
+//            self.statusArray = tempArray
             
             //在闭包回调之前下载好配图视图上的单张图片
             //告诉控制器,数据已经准备好了

@@ -12,8 +12,8 @@ class WYStatusPictureInfo: NSObject {
 
     /// 缩略图地址
     var thumbnail_pic : String?
-        
-     
+      //单张图片的大小
+     var size: CGSize?
     
     
 }

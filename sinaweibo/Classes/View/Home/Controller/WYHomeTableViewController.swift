@@ -54,6 +54,11 @@ class WYHomeTableViewController: WYVisitorViewController {
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))
     
+    // UITableViewController身上有一个属性，该属性就是刷新控件的属性
+    self.refreshControl = UIRefreshControl()
+    self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
+    
+    
     }
     
     func loadData () {
@@ -70,6 +75,8 @@ class WYHomeTableViewController: WYVisitorViewController {
             // 结束刷新
             self.pullUpView.stopAnimating()
 
+            self.refreshControl?.endRefreshing()
+            
         }
         
     }

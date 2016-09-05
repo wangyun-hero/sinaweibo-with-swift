@@ -48,6 +48,9 @@ class WYHomeTableViewController: WYVisitorViewController {
     //取消分割线
     tableView.separatorStyle = .none
     
+    //设置footview
+    tableView.tableFooterView = pullUpView
+    
     //点击右边item跳转
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))
     
@@ -102,6 +105,22 @@ class WYHomeTableViewController: WYVisitorViewController {
 //        }
 //     
 //    }
+    
+    //懒加载底部的菊花转
+//    lazy var pullupView : UIActivityIndicatorView = {
+//        let pullupView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+//        
+//        pullupView.backgroundColor = UIColor.orange
+//        return pullupView
+//    }()
+    private lazy var pullUpView: UIActivityIndicatorView = {
+        let pullUpView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        // 设置颜色
+        pullUpView.color = UIColor.black
+        pullUpView.startAnimating()
+        return pullUpView
+    }()
+
     
     
     

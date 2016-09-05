@@ -57,6 +57,24 @@ class WYStatusPictureView: UICollectionView {
 
     private func calcSize(count: Int) -> CGSize {
         
+        if count == 1 {
+            //取到图片的大小
+            if let size = pic_urls?.first?.size {
+                // 通过屏幕比例计算出真实的大小
+                let scale = UIScreen.main.scale
+                let result = CGSize(width: scale * size.width, height: scale * size.height)
+                
+                // 调用itemSize的大小
+                // 1. 取到layout
+                let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+                layout.itemSize = result
+                
+                // 2. 调整配图控件的大大小
+                return result
+            }
+            
+        }
+        
         // 要确定有多少列
         var col = count > 3 ? 3 : count
         if count == 4 {
@@ -72,6 +90,12 @@ class WYStatusPictureView: UICollectionView {
         let height = CGFloat(row) * itemWH + CGFloat(row - 1) * itemMargin
         
         let size = CGSize(width: width, height: height)
+        
+        // 如果是多张图片，要调条目的大小调整回来
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        // 调条目大小调整成正方形
+        layout.itemSize = CGSize(width: itemWH, height: itemWH)
+        
         return size
     }
 

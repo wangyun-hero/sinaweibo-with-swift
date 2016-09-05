@@ -55,9 +55,11 @@ class WYHomeTableViewController: WYVisitorViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(pop))
     
     // UITableViewController身上有一个属性，该属性就是刷新控件的属性
-    self.refreshControl = UIRefreshControl()
-    self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
+//    self.refreshControl = UIRefreshControl()
+//    self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
     
+    //将下拉刷新控件添加到tableview
+    self.tableView.addSubview(wyRefreshControl)
     
     }
     
@@ -75,7 +77,7 @@ class WYHomeTableViewController: WYVisitorViewController {
             // 结束刷新
             self.pullUpView.stopAnimating()
 
-            self.refreshControl?.endRefreshing()
+//            self.refreshControl?.endRefreshing()
             
         }
         
@@ -116,12 +118,6 @@ class WYHomeTableViewController: WYVisitorViewController {
 //    }
     
     //懒加载底部的菊花转
-//    lazy var pullupView : UIActivityIndicatorView = {
-//        let pullupView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-//        
-//        pullupView.backgroundColor = UIColor.orange
-//        return pullupView
-//    }()
      lazy var pullUpView: UIActivityIndicatorView = {
         let pullUpView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         // 设置颜色
@@ -130,6 +126,11 @@ class WYHomeTableViewController: WYVisitorViewController {
         return pullUpView
     }()
 
+    //懒加载顶部的下啦刷新控件
+    lazy var wyRefreshControl : WYRefreshControl = WYRefreshControl()
+    
+    
+    
     
     
     

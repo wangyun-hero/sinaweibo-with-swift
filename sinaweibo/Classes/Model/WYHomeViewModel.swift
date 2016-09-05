@@ -23,7 +23,8 @@ class WYHomeViewModel: NSObject {
         if isPullUp {
             
             if let id = statusArray?.last?.status?.id {
-                maxId = id
+                //
+                maxId = id - 1
             }
             
         }

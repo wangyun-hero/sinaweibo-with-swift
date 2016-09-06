@@ -25,7 +25,41 @@ private let HMRefreshControlH: CGFloat = 50
 class WYRefreshControl: UIControl {
 
     //刷新的状态
-    var refreshState : WYRefreshType = .normal
+    var refreshState : WYRefreshType = .normal {
+        
+        didSet {
+            switch refreshState {
+            case .pulling:
+                //调转箭头
+                UIView.animate(withDuration: 0.25, animations: { 
+                    self.arrowIcon.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
+                })
+                self.messageLabel.text = "松开起飞"
+            case .normal:
+                //关闭菊花转
+                indicatorView.stopAnimating()
+                //箭头显示出来
+                arrowIcon.isHidden = false
+                UIView.animate(withDuration: 0.25, animations: { 
+                    self.arrowIcon.transform = CGAffineTransform.identity
+                })
+                self.messageLabel.text = "等待起飞"
+            case .refreshing:
+                arrowIcon.isHidden = true
+                indicatorView.isHidden = false
+                indicatorView.startAnimating()
+                self.messageLabel.text = "正在起飞"
+            
+                // 如果让其在转的时候停止在界面的顶端
+                // 为tableView顶部增加多余的滑动距离
+                var inset = self.scrollview!.contentInset
+                inset.top += HMRefreshControlH
+                self.scrollview?.contentInset = inset
+                
+            }
+        }
+        
+    }
     //记录父控件(也就是记录tableview)
     var scrollview : UIScrollView?
     
@@ -42,7 +76,7 @@ class WYRefreshControl: UIControl {
         //判断类型
         if newSuperview is UIScrollView {
             //记录父控件
-            self.scrollview = newSuperview as! UIScrollView
+            self.scrollview = newSuperview as? UIScrollView
             //添加观察者
             self.scrollview?.addObserver(self, forKeyPath: "contentOffset", options: [.new], context: nil)
         }
@@ -78,15 +112,9 @@ class WYRefreshControl: UIControl {
             if refreshState == .pulling {
                 refreshState = .refreshing
             }
-            
-            
-            
+           
         }
-        
-        
-        
-        
-        
+       
     }
     
     
@@ -99,6 +127,7 @@ class WYRefreshControl: UIControl {
         //添加下拉刷新的控件
         addSubview(arrowIcon)
         addSubview(messageLabel)
+        addSubview(indicatorView)
         
         //约束
         arrowIcon.snp_makeConstraints { (make ) in
@@ -109,7 +138,9 @@ class WYRefreshControl: UIControl {
             make.leading.equalTo(arrowIcon.snp_trailing)
             make.centerY.equalTo(arrowIcon)
         }
-        
+        indicatorView.snp_makeConstraints { (make ) in
+            make.center.equalTo(arrowIcon)
+        }
         
     }
     
@@ -124,5 +155,15 @@ class WYRefreshControl: UIControl {
         messageLabel.text = "等待起飞"
         return messageLabel
     }()
+    
+    //菊花转
+    lazy var indicatorView :UIActivityIndicatorView = {
+        
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.color = UIColor.black
+        indicatorView.isHidden = true
+        return indicatorView
+    }()
+
 
 }

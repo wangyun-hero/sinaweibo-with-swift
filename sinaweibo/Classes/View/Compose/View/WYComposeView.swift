@@ -21,9 +21,19 @@ class WYComposeView: UIView {
     
     
     func setupUI() {
-        getScreenSnap()
+        //高斯模糊
+//        let image = getScreenSnap()?.applyLightEffect()
         self.backgroundColor = UIColor.red
         self.frame = UIScreen.main.bounds
+        
+        //添加背景图
+        addSubview(bgImage)
+        
+        //约束
+        bgImage.snp_makeConstraints { (make ) in
+            make.edges.equalTo(self)
+        }
+       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,10 +41,19 @@ class WYComposeView: UIView {
     }
     
     
+    // MARK: - 懒加载控件
+    private lazy var bgImage: UIImageView = {
+        let imaged = self.getScreenSnap()?.applyLightEffect()
+        let imageView = UIImageView(image: imaged)
+        return imageView
+    }()
+
+
+    
     /// 截屏的功能
     ///
     /// - returns: <#return value description#>
-    private func getScreenSnap() -> UIImage? {
+     func getScreenSnap() -> UIImage? {
         
         // 先获取到window
         let window = UIApplication.shared.keyWindow!

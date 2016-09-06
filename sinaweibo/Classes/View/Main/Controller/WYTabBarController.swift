@@ -17,10 +17,13 @@ class WYTabBarController: UITabBarController {
         //自定义一个tabbar
         let tabbar = WYTabBar()
         
-        //准备好一个闭包,当底部 + 号被点击的时候将时间传递
+        //准备好一个闭包,当底部 + 号被点击的时候将事件传递
         tabbar.closure = {
             () -> () in
             print("加按钮被点击,弹出菜单")
+            let v = WYComposeView()
+            let window = UIApplication.shared.keyWindow
+            window?.addSubview(v)
         }
         
         // 值  键(属性) 相当于把创建的tabbar赋值给控制器的TabBar

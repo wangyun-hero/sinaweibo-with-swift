@@ -40,6 +40,7 @@
 		CB38C3391D75CB2B00EE51F0 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C32D1D75CB2B00EE51F0 /* SnapKit.swift */; };
 		CB38C33A1D75CB2B00EE51F0 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C32E1D75CB2B00EE51F0 /* View+SnapKit.swift */; };
 		CB38C33B1D75CB2B00EE51F0 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38C32F1D75CB2B00EE51F0 /* ViewController+SnapKit.swift */; };
+		CB7CD55F1D7F220A00D6B4EE /* WYComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD55E1D7F220A00D6B4EE /* WYComposeView.swift */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		CB38C32D1D75CB2B00EE51F0 /* SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		CB38C32E1D75CB2B00EE51F0 /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
 		CB38C32F1D75CB2B00EE51F0 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
+		CB7CD55E1D7F220A00D6B4EE /* WYComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeView.swift; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +191,31 @@
 			path = "SnapKit修改版";
 			sourceTree = "<group>";
 		};
+		CB7CD55B1D7F21C500D6B4EE /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				CB7CD55C1D7F21C500D6B4EE /* Controller */,
+				CB7CD55D1D7F21C500D6B4EE /* View */,
+			);
+			name = Compose;
+			path = View/Compose;
+			sourceTree = "<group>";
+		};
+		CB7CD55C1D7F21C500D6B4EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CB7CD55D1D7F21C500D6B4EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB7CD55E1D7F220A00D6B4EE /* WYComposeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CBA86D901D73F8C300A1E05C = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +249,7 @@
 		CBA86DAE1D73F91A00A1E05C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CB7CD55B1D7F21C500D6B4EE /* Compose */,
 				CBA86DAF1D73F91A00A1E05C /* Model */,
 				CBA86DB01D73F91A00A1E05C /* Tools */,
 				CBA86DB11D73F91A00A1E05C /* View */,
@@ -604,6 +632,7 @@
 				CB38C3321D75CB2B00EE51F0 /* ConstraintDescription.swift in Sources */,
 				CB3201101D7744310055C5D2 /* WYOAuthViewController.swift in Sources */,
 				CB38C33A1D75CB2B00EE51F0 /* View+SnapKit.swift in Sources */,
+				CB7CD55F1D7F220A00D6B4EE /* WYComposeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

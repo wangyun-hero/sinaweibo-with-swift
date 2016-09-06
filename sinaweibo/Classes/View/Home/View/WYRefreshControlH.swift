@@ -24,6 +24,11 @@ private let HMRefreshControlH: CGFloat = 50
 
 class WYRefreshControl: UIControl {
 
+    //刷新的状态
+    var refreshState : WYRefreshType = .normal
+    //记录父控件(也就是记录tableview)
+    var scrollview : UIScrollView?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -33,6 +38,20 @@ class WYRefreshControl: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        //判断类型
+        if newSuperview is UIScrollView {
+            //记录父控件
+            self.scrollview = newSuperview as! UIScrollView
+            //添加观察者
+            self.scrollview?.addObserver(self, forKeyPath: "contentOffset", options: [.new], context: nil)
+        }
+    }
+    
+    //移除观察者,否则崩溃
+    deinit {
+        self.scrollview?.removeObserver(self, forKeyPath: "contentOffset")
+    }
     
     func setupUI () {
         backgroundColor = UIColor.orange

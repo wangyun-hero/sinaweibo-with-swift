@@ -13,7 +13,7 @@ class WYHomeViewModel: NSObject {
     var statusArray: [WYStatusViewModel]?
     
     //加载数据
-    func loadData (isPullUp : Bool, completion:@escaping (Bool) -> ()) {
+    func loadData (isPullUp : Bool, completion:@escaping (Bool,Int) -> ()) {
         //url地址
         let urlString = "https://api.weibo.com/2/statuses/friends_timeline.json"
         
@@ -50,7 +50,7 @@ class WYHomeViewModel: NSObject {
         HMNetworkTools.sharedTools.request(method: .Get, urlString: urlString, parameters: params) { (response, error) in
             if (response == nil || error != nil) {
                 print("请求错误\(error)")
-                completion(false)
+                completion(false,0)
                 return
             }
             
@@ -100,7 +100,7 @@ class WYHomeViewModel: NSObject {
     }
    
     //异步下载图片的方法
-   private func cachesingleImage(status:[WYStatusViewModel],completion:@escaping (Bool) -> ()) {
+   private func cachesingleImage(status:[WYStatusViewModel],completion:@escaping (Bool,Int) -> ()) {
         //初始化一个调度组
         let group = DispatchGroup.init()
         //遍历去判断是否有单张图片
@@ -134,7 +134,7 @@ class WYHomeViewModel: NSObject {
         //调度组自带的监听方法
         group.notify(queue: DispatchQueue.main) {
             print("所以图片下载完成")
-            completion(true)
+            completion(true,status.count)
         }
         
     }

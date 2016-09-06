@@ -39,6 +39,12 @@ class WYHomeTableViewController: WYVisitorViewController {
     
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendsearch", target: nil, action: nil)
     
+    
+    //添加提示框
+    self.navigationController?.view.insertSubview(pullDownTipLabel, belowSubview: (self.navigationController?.navigationBar)!)
+    //设置提示框的y值
+    pullDownTipLabel.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)! -  pullDownTipLabel.frame.height
+    
     //注册cell
     tableView.register(WYStatusCell.self, forCellReuseIdentifier: "cell")
     //行高自动计算
@@ -65,7 +71,7 @@ class WYHomeTableViewController: WYVisitorViewController {
     }
     
     func loadData () {
-        homeViewModel.loadData(isPullUp: pullUpView.isAnimating) { (isSuccess) in
+        homeViewModel.loadData(isPullUp: pullUpView.isAnimating) { (isSuccess,count) in
             if isSuccess  {
                 //刷新数据
                 self.tableView.reloadData()
@@ -74,6 +80,16 @@ class WYHomeTableViewController: WYVisitorViewController {
             {
                 print("加载错误")
             }
+            
+            //       测试       //
+            print("加载回来\(count)条")
+            
+            // 如果不是上拉加载，才去显示这个label
+            if !self.pullUpView.isAnimating{
+                self.showTipLabel(count: count)
+                
+            }
+            
             
             // 结束刷新
             self.pullUpView.stopAnimating()
@@ -131,9 +147,45 @@ class WYHomeTableViewController: WYVisitorViewController {
     //懒加载顶部的下啦刷新控件
     lazy var wyRefreshControl : WYRefreshControl = WYRefreshControl()
     
+    lazy var pullDownTipLabel :UILabel = {
+        
+        let label = UILabel(textColour: UIColor.white, fontSize: 12)
+        //背景颜色
+        label.backgroundColor = UIColor.blue
+        //居中
+        label.textAlignment = .center
+        //隐藏
+        label.isEnabled = true
+        //大小
+        label.frame.size = CGSize(width: HMScreenW, height: 35)
+        return label
+    }()
+
     
-    
-    
+    func showTipLabel(count:Int) {
+        //解决重复下拉pullDownTipLabel显示不正常的问题
+//        if pullDownTipLabel.isHidden == false {
+//            return
+//        }
+        
+        //让label显示出来
+        pullDownTipLabel.isHidden = false
+        //要显示的字符串
+        let str = count == 0 ? "没有数据" : "\(count)条微博数据"
+        //设置显示的字符串
+        pullDownTipLabel.text = str
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.pullDownTipLabel.transform = CGAffineTransform.init(translationX: 0, y: self.pullDownTipLabel.frame.height)
+            }) { (_) in
+             UIView.animate(withDuration: 1, delay: 1, options: [], animations: {
+                self.pullDownTipLabel.transform = CGAffineTransform.identity
+                }, completion: { (_) in
+                    self.pullDownTipLabel.isHidden = true
+             })
+        }
+       
+    }
     
     
     func pop(){

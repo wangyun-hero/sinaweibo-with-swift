@@ -64,12 +64,17 @@ class WYRefreshControl: UIControl {
                 indicatorView.startAnimating()
                 self.messageLabel.text = "正在起飞"
             
-                // 如果让其在转的时候停止在界面的顶端
-                // 为tableView顶部增加多余的滑动距离
-                var inset = self.scrollview!.contentInset
-                inset.top += HMRefreshControlH
-                self.scrollview?.contentInset = inset
-                // 发送事件，其实就是调用addTarget里面的方法
+                UIView.animate(withDuration:
+                    1, animations: {
+                        // 如果让其在转的时候停止在界面的顶端
+                        // 为tableView顶部增加多余的滑动距离
+                        var inset = self.scrollview!.contentInset
+                        inset.top += HMRefreshControlH
+                        self.scrollview?.contentInset = inset
+
+                })
+                
+            // 发送事件，其实就是调用addTarget里面的方法
             sendActions(for: UIControlEvents.valueChanged)
 
             }

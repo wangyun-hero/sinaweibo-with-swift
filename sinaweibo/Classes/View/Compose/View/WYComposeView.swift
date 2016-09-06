@@ -28,11 +28,18 @@ class WYComposeView: UIView {
         
         //添加背景图
         addSubview(bgImage)
+        addSubview(sloganImage)
         
         //约束
         bgImage.snp_makeConstraints { (make ) in
             make.edges.equalTo(self)
         }
+        
+        sloganImage.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(self)
+            make.top.equalTo(100)
+        }
+
        
     }
     
@@ -43,41 +50,16 @@ class WYComposeView: UIView {
     
     // MARK: - 懒加载控件
     private lazy var bgImage: UIImageView = {
-        let imaged = self.getScreenSnap()?.applyLightEffect()
+        let imaged = UIImage.getScreenSnap()?.applyLightEffect()
         let imageView = UIImageView(image: imaged)
         return imageView
     }()
 
-
-    
-    /// 截屏的功能
-    ///
-    /// - returns: <#return value description#>
-     func getScreenSnap() -> UIImage? {
-        
-        // 先获取到window
-        let window = UIApplication.shared.keyWindow!
-        
-        // 开启上下文
-        // 如果最后一参数传入0的话，会按照屏幕的真实大小来截取，就是不会截取缩放之后的内容
-        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0)
-        
-        // 将window的内容渲染到上下文中
-        window.drawHierarchy(in: window.bounds, afterScreenUpdates: false)
-        
-        // 取到上下文中的图片
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        // 关闭上下文
-        UIGraphicsEndImageContext()
-        
-//         保存到桌面
-//        let data = UIImagePNGRepresentation(image!)! as NSData
-//        data.write(toFile: "/Users/gaolingfeng/Desktop/Untitled.png", atomically: true)
-        
-        // 返回结果
-        
-        return image
-    }
+    // compose_slogan
+    private lazy var sloganImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "compose_slogan"))
+        return imageView
+    }()
 
 
 }

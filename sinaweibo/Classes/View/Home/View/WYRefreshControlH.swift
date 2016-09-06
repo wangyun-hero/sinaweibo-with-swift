@@ -53,6 +53,44 @@ class WYRefreshControl: UIControl {
         self.scrollview?.removeObserver(self, forKeyPath: "contentOffset")
     }
     
+    //当tableview的contentOffset改变的时候会调用这个方法
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        //通过观察,当self.scrollview?.contentOffset <= -114的时候,刷新控件就完全显露出来
+        print(self.scrollview?.contentOffset)
+        //相当于64的高度
+        let contentInsetTop  = self.scrollview!.contentInset.top
+        //-114
+        let conditionValue :CGFloat = -contentInsetTop - HMRefreshControlH
+        
+        //用户在拖动
+        if (scrollview?.isDragging)! {
+            //当刷新状态是默认状态并且offsetY小于114的时候
+            if refreshState == .normal && self.scrollview!.contentOffset.y < conditionValue {
+                print("进入松手就刷新的状态")
+                self.refreshState = .pulling
+            }else if refreshState == .pulling && self.scrollview!.contentOffset.y > conditionValue {
+                print("进入到默认状态")
+                self.refreshState = .normal
+            }
+           
+        }else{
+            //用户没有拖动
+            if refreshState == .pulling {
+                refreshState = .refreshing
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     func setupUI () {
         backgroundColor = UIColor.orange
         frame.size = CGSize(width: HMScreenW, height: HMRefreshControlH)

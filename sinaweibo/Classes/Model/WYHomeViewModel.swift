@@ -19,12 +19,20 @@ class WYHomeViewModel: NSObject {
         
         // 默认maxId 为0
         var maxId: Int64 = 0
+        var sinceId: Int64 = 0
 
+        //上拉加载
         if isPullUp {
             
             if let id = statusArray?.last?.status?.id {
                 //
                 maxId = id - 1
+            }
+            
+        }else{
+            //不是上拉加载就是下拉刷新
+            if let id = statusArray?.first?.status?.id {
+                sinceId = id
             }
             
         }
@@ -34,6 +42,7 @@ class WYHomeViewModel: NSObject {
         let params = [
             
             "max_id":"\(maxId)",
+            "since_id": "\(sinceId)",
             "access_token": HMUserAccountViewModel.sharedModel.accessToken ?? ""
         ]
         

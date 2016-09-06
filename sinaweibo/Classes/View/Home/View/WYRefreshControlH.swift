@@ -30,8 +30,8 @@ class WYRefreshControl: UIControl {
         didSet {
             switch refreshState {
             case .pulling:
-                //调转箭头
-                UIView.animate(withDuration: 0.25, animations: { 
+                // 调转箭头
+                UIView.animate(withDuration: 0.25, animations: {
                     self.arrowIcon.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
                 })
                 self.messageLabel.text = "松开起飞"
@@ -40,13 +40,27 @@ class WYRefreshControl: UIControl {
                 indicatorView.stopAnimating()
                 //箭头显示出来
                 arrowIcon.isHidden = false
-                UIView.animate(withDuration: 0.25, animations: { 
+                UIView.animate(withDuration: 0.25, animations: {
                     self.arrowIcon.transform = CGAffineTransform.identity
                 })
                 self.messageLabel.text = "等待起飞"
+                
+                // 判断如果之前是刷新状态的话，才去执行下面的代码
+                if oldValue == .refreshing {
+                    // 把inset移回去
+                    UIView.animate(withDuration: 0.25, animations: {
+                        // 如果让其在转的时候停止在界面的顶端
+                        // 为tableView顶部增加多余的滑动距离
+                        var inset = self.scrollview!.contentInset
+                        inset.top -= HMRefreshControlH
+                        self.scrollview!.contentInset = inset
+                    })
+                }
+
+                
             case .refreshing:
                 arrowIcon.isHidden = true
-                indicatorView.isHidden = false
+//indicatorView.isHidden = false
                 indicatorView.startAnimating()
                 self.messageLabel.text = "正在起飞"
             
@@ -55,11 +69,20 @@ class WYRefreshControl: UIControl {
                 var inset = self.scrollview!.contentInset
                 inset.top += HMRefreshControlH
                 self.scrollview?.contentInset = inset
-                
+                // 发送事件，其实就是调用addTarget里面的方法
+            sendActions(for: UIControlEvents.valueChanged)
+
             }
+
         }
         
     }
+    //停止刷新
+    func endRefreshing() {
+        refreshState = .normal
+    }
+    
+    
     //记录父控件(也就是记录tableview)
     var scrollview : UIScrollView?
     
@@ -82,10 +105,7 @@ class WYRefreshControl: UIControl {
         }
     }
     
-    //移除观察者,否则崩溃
-    deinit {
-        self.scrollview?.removeObserver(self, forKeyPath: "contentOffset")
-    }
+    
     
     //当tableview的contentOffset改变的时候会调用这个方法
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -97,17 +117,17 @@ class WYRefreshControl: UIControl {
         let conditionValue :CGFloat = -contentInsetTop - HMRefreshControlH
         
         //用户在拖动
-        if (scrollview?.isDragging)! {
+        if scrollview!.isDragging {
             //当刷新状态是默认状态并且offsetY小于114的时候
-            if refreshState == .normal && self.scrollview!.contentOffset.y < conditionValue {
+            if refreshState == .normal && self.scrollview!.contentOffset.y <= conditionValue {
                 print("进入松手就刷新的状态")
                 self.refreshState = .pulling
             }else if refreshState == .pulling && self.scrollview!.contentOffset.y > conditionValue {
                 print("进入到默认状态")
                 self.refreshState = .normal
             }
-           
-        }else{
+        // idDragging 代表用户是否在拖动
+                }else{
             //用户没有拖动
             if refreshState == .pulling {
                 refreshState = .refreshing
@@ -116,7 +136,10 @@ class WYRefreshControl: UIControl {
         }
        
     }
-    
+    //移除观察者,否则崩溃
+    deinit {
+        self.scrollview?.removeObserver(self, forKeyPath: "contentOffset")
+    }
     
     
     func setupUI () {
@@ -161,7 +184,7 @@ class WYRefreshControl: UIControl {
         
         let indicatorView = UIActivityIndicatorView()
         indicatorView.color = UIColor.black
-        indicatorView.isHidden = true
+        //indicatorView.isHidden = true
         return indicatorView
     }()
 

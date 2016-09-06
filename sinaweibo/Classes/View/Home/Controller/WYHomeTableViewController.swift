@@ -60,6 +60,7 @@ class WYHomeTableViewController: WYVisitorViewController {
     
     //将下拉刷新控件添加到tableview
     self.tableView.addSubview(wyRefreshControl)
+    wyRefreshControl.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
     
     }
     
@@ -78,6 +79,7 @@ class WYHomeTableViewController: WYVisitorViewController {
             self.pullUpView.stopAnimating()
 
 //            self.refreshControl?.endRefreshing()
+            self.wyRefreshControl.endRefreshing()
             
         }
         

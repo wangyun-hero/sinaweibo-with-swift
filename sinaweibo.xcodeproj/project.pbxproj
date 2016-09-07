@@ -44,6 +44,7 @@
 		CB7CD5631D7F287200D6B4EE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5621D7F287200D6B4EE /* UIImage+ImageEffects.m */; };
 		CB7CD5661D7F311800D6B4EE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5651D7F311800D6B4EE /* UIImage+Extension.swift */; };
 		CB7CD5681D7F324F00D6B4EE /* WYComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */; };
+		CB7CD56A1D7F3A0800D6B4EE /* compose.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7CD5691D7F3A0800D6B4EE /* compose.plist */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 		CB7CD5641D7F28B800D6B4EE /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		CB7CD5651D7F311800D6B4EE /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeButton.swift; sourceTree = "<group>"; };
+		CB7CD5691D7F3A0800D6B4EE /* compose.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = compose.plist; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				CBA86DA01D73F8C300A1E05C /* Main.storyboard */,
 				CBA86DA31D73F8C300A1E05C /* Assets.xcassets */,
 				CBA86DA81D73F8C300A1E05C /* Info.plist */,
+				CB7CD5691D7F3A0800D6B4EE /* compose.plist */,
 				CB7CD5641D7F28B800D6B4EE /* Bridge-Header.h */,
 			);
 			path = sinaweibo;
@@ -548,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA86DD11D745F5100A1E05C /* WYDiscoverSearchView.xib in Resources */,
+				CB7CD56A1D7F3A0800D6B4EE /* compose.plist in Resources */,
 				CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */,
 				CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */,
 			);

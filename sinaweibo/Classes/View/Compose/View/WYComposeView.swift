@@ -40,6 +40,7 @@ class WYComposeView: UIView {
             make.top.equalTo(100)
         }
 
+        addChildButtons()
        
     }
     
@@ -47,6 +48,48 @@ class WYComposeView: UIView {
         self.removeFromSuperview()
     }
     
+    /// 添加子按钮
+    func addChildButtons() {
+        
+        // 按钮的宽度
+        let itemW: CGFloat = 80
+        let itemH: CGFloat = 110
+        // 求出每按钮之间的间距
+        let itemMargin = (HMScreenW - 3 * itemW) / 4
+        
+        // 读取 compose.list
+        let path = Bundle.main.path(forResource: "compose.plist", ofType: nil)!
+        let array = NSArray(contentsOfFile: path)!
+        
+        for i in 0..<array.count {
+            let button = WYComposeButton(textColour: UIColor.darkGray, fontSize: 14)
+            
+            // 取出对应位置的字典
+            let dict = array[i] as! [String: String]
+            // 设置图标与文字
+            button.setImage(UIImage(named: dict["icon"]!), for: UIControlState.normal)
+            button.setTitle(dict["title"]!, for: UIControlState.normal)
+            // 设置大小
+            button.frame.size = CGSize(width: itemW, height: itemH)
+            
+            // 1. 求出按钮在第几列
+            let col = i % 3
+            // 2. 求出按钮在第几行
+            let row = i / 3
+            
+            // 通过列数求出x值
+            let x = CGFloat(col) * itemW + CGFloat(col + 1) * itemMargin
+            // 通过行数求出y值
+            let y = CGFloat(row) * itemH + HMScreenH
+            // 设置按钮的位置
+            button.frame.origin = CGPoint(x: x, y: y)
+            
+            addSubview(button)
+        }
+        
+        
+    }
+
     
     // MARK: - 懒加载控件
     private lazy var bgImage: UIImageView = {

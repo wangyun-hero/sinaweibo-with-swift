@@ -13,9 +13,42 @@ class WYComposeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.orange
+        setupUI()
+        
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    func back() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    //懒加载中间的label(用到富文本)的标题
+    internal lazy var titleLabel : UILabel = {
+        let label = UILabel()
+        //换行
+        label.numberOfLines = 0
+        //居中
+        label.textAlignment = .center
+        if let name = HMUserAccountViewModel.sharedModel.account?.name {
+            let title = "发微博\n\(name)"
+            //初始化富文本
+            let atrText = NSMutableAttributedString(string: title)
+            // attrs:属性 range:范围
+            //取到昵称字符串的范围,只有nsstring字符串的范围才是NSRange
+            let range = (title as NSString).range(of: name)
+            //编辑富文本
+            atrText.addAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 12),NSForegroundColorAttributeName:UIColor.lightGray], range: range)
+            label.attributedText = atrText
+            
+        }else{
+            
+            label.text = "发微博"
+        }
+        label.sizeToFit()
+       return label
+    }()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -23,14 +56,27 @@ class WYComposeViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
+
+//MARK: - 初始化界面
+
+extension WYComposeViewController{
+    func setupUI () {
+        
+        //背景颜色
+        self.view.backgroundColor = UIColor.white
+        //左边item
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(back))
+        
+        
+        navigationItem.titleView = titleLabel
+    }
+    
+    
+    
+}
+
+
+

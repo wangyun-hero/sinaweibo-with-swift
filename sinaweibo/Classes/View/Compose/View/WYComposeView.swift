@@ -199,7 +199,7 @@ class WYComposeView: UIView {
                     //要模态的控制器
                     let vc = type.init()
                     //模态
-                    self.target?.present(vc, animated: true, completion: {
+                    self.target?.present(WYNavigationController(rootViewController: vc), animated: true, completion: {
                         print("完成")
                         //这句代码如果不写的话会弹到后面
                         self.removeFromSuperview()

@@ -49,6 +49,27 @@ class WYComposeViewController: UIViewController {
         label.sizeToFit()
        return label
     }()
+    
+    lazy var rightButton :UIButton = {
+        
+        let button = UIButton()
+        //设置文字大小
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        //设置不同状态下的北京图片
+    button.setBackgroundImage(UIImage(named:"common_button_orange"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: UIControlState.highlighted)
+        button.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: UIControlState.disabled)
+        
+        //不同状态下文字的颜色
+        button.setTitleColor(UIColor.gray, for: UIControlState.disabled)
+        button.setTitleColor(UIColor.red, for: UIControlState.normal)
+        button.setTitle("发送", for: UIControlState.normal)
+        // 设置按钮的大小
+        button.frame.size = CGSize(width: 44, height: 30)
+
+        return button
+    }()
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,9 +90,13 @@ extension WYComposeViewController{
         self.view.backgroundColor = UIColor.white
         //左边item
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(back))
-        
-        
         navigationItem.titleView = titleLabel
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        // 默认设置为不可用
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        
     }
     
     

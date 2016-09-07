@@ -7,6 +7,8 @@
 		<string>tabbar_compose_idea</string>
 		<key>title</key>
 		<string>文字</string>
+		<key>class</key>
+		<string>sinaweibo.WYComposeViewController</string>
 	</dict>
 	<dict>
 		<key>icon</key>

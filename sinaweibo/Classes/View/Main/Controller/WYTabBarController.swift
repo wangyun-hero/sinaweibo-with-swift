@@ -19,10 +19,10 @@ class WYTabBarController: UITabBarController {
         
         //准备好一个闭包,当底部 + 号被点击的时候将事件传递
         tabbar.closure = {
-            () -> () in
+            [weak self]in
             print("加按钮被点击,弹出菜单")
             let v = WYComposeView()
-            v.show()
+            v.show(target: self!)
         }
         
         // 值  键(属性) 相当于把创建的tabbar赋值给控制器的TabBar

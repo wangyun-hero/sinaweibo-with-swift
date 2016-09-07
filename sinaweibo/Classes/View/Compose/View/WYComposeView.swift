@@ -10,8 +10,12 @@ import UIKit
 import pop
 class WYComposeView: UIView {
     
+    //外界传入的控制器,然后模态一个控制器
+    var target : UIViewController?
     //懒加载一个button的数组
     lazy var buttons: [UIButton] = [UIButton]()
+    //字典数组
+    var infoArray : NSArray?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,9 +64,15 @@ class WYComposeView: UIView {
         // 读取 compose.list
         let path = Bundle.main.path(forResource: "compose.plist", ofType: nil)!
         let array = NSArray(contentsOfFile: path)!
+        //记录plist里的字典数组
+        self.infoArray = array
+        
         
         for i in 0..<array.count {
             let button = WYComposeButton(textColour: UIColor.darkGray, fontSize: 14)
+            
+            //添加按钮的点击事件
+            button.addTarget(self, action: #selector(childButtonClick(button:)), for:UIControlEvents.touchUpInside)
             
             // 取出对应位置的字典
             let dict = array[i] as! [String: String]
@@ -122,9 +132,12 @@ class WYComposeView: UIView {
     
     
     //提供一个方法给外界调用
-    func show() {
-        let window = UIApplication.shared.keyWindow
-        window?.addSubview(self)
+    func show(target : UIViewController) {
+        //记录传入的控制器
+        self.target = target
+//        let window = UIApplication.shared.keyWindow
+//        window?.addSubview(self)
+        self.target?.view.addSubview(self)
        
         //取到button来做动画
         for (index,button) in buttons.enumerated() {
@@ -155,6 +168,44 @@ class WYComposeView: UIView {
         anim?.beginTime = CACurrentMediaTime() + Double(index) * 0.025
         button.pop_add(anim, forKey: nil)
 
+    }
+    
+    //MARK : - 按钮的点击事件
+    @objc private func childButtonClick (button : UIButton) {
+        UIView.animate(withDuration: 0.25, animations: {
+            for value in self.buttons {
+                //如果遍历的这个按钮和点击的按钮一样就放大
+                if button == value {
+                    value.transform = CGAffineTransform.init(scaleX: 2, y: 2)
+                }else{
+                    //缩小
+                    value.transform = CGAffineTransform.init(scaleX: 0.2, y: 0.2)
+                }
+                value.alpha = 0.1
+                
+            }
+
+            }) { (_) in
+                //动画执行完成调用
+                //我们要做到 就是模态控制器
+                //取到点击的button的下标
+                let index = self.buttons.index(of: button) ?? 0
+                //取到对应index的字典
+                let dict = self.infoArray![index] as! [String :String]
+                
+                if let name = dict["class"] {
+                    //通过类名来初始化类
+                    let type = NSClassFromString(name)! as! UIViewController.Type
+                    //要模态的控制器
+                    let vc = type.init()
+                    //模态
+                    self.target?.present(vc, animated: true, completion: {
+                        print("完成")
+                        //这句代码如果不写的话会弹到后面
+                        self.removeFromSuperview()
+                    })
+                }
+        }
     }
     
     // MARK: - 懒加载控件

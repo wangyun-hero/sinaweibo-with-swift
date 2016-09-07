@@ -45,6 +45,7 @@
 		CB7CD5661D7F311800D6B4EE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5651D7F311800D6B4EE /* UIImage+Extension.swift */; };
 		CB7CD5681D7F324F00D6B4EE /* WYComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */; };
 		CB7CD56A1D7F3A0800D6B4EE /* compose.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7CD5691D7F3A0800D6B4EE /* compose.plist */; };
+		CB7CD56C1D805BD300D6B4EE /* WYComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		CB7CD5651D7F311800D6B4EE /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeButton.swift; sourceTree = "<group>"; };
 		CB7CD5691D7F3A0800D6B4EE /* compose.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = compose.plist; sourceTree = "<group>"; };
+		CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeViewController.swift; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		CB7CD55C1D7F21C500D6B4EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				CBA86DDD1D74ABE400A1E05C /* WYNavigationController.swift in Sources */,
 				CB06EB821D7AA9D30048DA10 /* WYStatusViewModel.swift in Sources */,
 				CBA86DDF1D751CCF00A1E05C /* WYVisitorViewController.swift in Sources */,
+				CB7CD56C1D805BD300D6B4EE /* WYComposeViewController.swift in Sources */,
 				CBA86DD81D74905000A1E05C /* UIBarButtonItem+Extension.swift in Sources */,
 				CB38C3351D75CB2B00EE51F0 /* ConstraintRelation.swift in Sources */,
 				CB06EB861D7B03C90048DA10 /* WYUser.swift in Sources */,

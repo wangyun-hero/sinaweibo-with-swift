@@ -9,6 +9,18 @@
 import UIKit
 
 class WYComposeButton: UIButton {
+    
+    //取消button点击之后的高亮效果
+    override var isHighlighted: Bool{
+        set{
+            
+        }
+        get{
+            return false
+        }
+    }
+    
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -22,8 +22,7 @@ class WYTabBarController: UITabBarController {
             () -> () in
             print("加按钮被点击,弹出菜单")
             let v = WYComposeView()
-            let window = UIApplication.shared.keyWindow
-            window?.addSubview(v)
+            v.show()
         }
         
         // 值  键(属性) 相当于把创建的tabbar赋值给控制器的TabBar

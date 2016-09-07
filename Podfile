@@ -11,5 +11,5 @@ pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'YYModel'
-
+pod 'pop'
 end

@@ -89,6 +89,10 @@ class WYComposeView: UIView {
         
         
     }
+    
+    private func test () {
+        print("sss")
+    }
 
     
     // MARK: - 懒加载控件

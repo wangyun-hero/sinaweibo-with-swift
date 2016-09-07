@@ -27,6 +27,9 @@ class WYComposeButton: UIButton {
         titleLabel?.textAlignment = .center
     }
     
+    func test() {
+        print("ssss")
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

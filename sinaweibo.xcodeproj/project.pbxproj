@@ -46,6 +46,7 @@
 		CB7CD5681D7F324F00D6B4EE /* WYComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */; };
 		CB7CD56A1D7F3A0800D6B4EE /* compose.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7CD5691D7F3A0800D6B4EE /* compose.plist */; };
 		CB7CD56C1D805BD300D6B4EE /* WYComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */; };
+		CB7CD56E1D807D5100D6B4EE /* WYTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeButton.swift; sourceTree = "<group>"; };
 		CB7CD5691D7F3A0800D6B4EE /* compose.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = compose.plist; sourceTree = "<group>"; };
 		CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeViewController.swift; sourceTree = "<group>"; };
+		CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYTextView.swift; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				CB7CD55E1D7F220A00D6B4EE /* WYComposeView.swift */,
 				CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */,
+				CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				CB38C3311D75CB2B00EE51F0 /* ConstraintAttributes.swift in Sources */,
 				CBA86DDB1D749D7400A1E05C /* WYTempViewController.swift in Sources */,
 				CB38C3361D75CB2B00EE51F0 /* Debugging.swift in Sources */,
+				CB7CD56E1D807D5100D6B4EE /* WYTextView.swift in Sources */,
 				CB38C3331D75CB2B00EE51F0 /* ConstraintItem.swift in Sources */,
 				CB06EB7E1D79F3D60048DA10 /* WYStatusCell.swift in Sources */,
 				CBA86DC91D73F91A00A1E05C /* WYTabBarController.swift in Sources */,

@@ -50,6 +50,7 @@ class WYComposeViewController: UIViewController {
        return label
     }()
     
+    //右边的button
     lazy var rightButton :UIButton = {
         
         let button = UIButton()
@@ -69,6 +70,20 @@ class WYComposeViewController: UIViewController {
 
         return button
     }()
+    
+    //textView
+    internal lazy var textView: UITextView = {
+        let textView = UITextView()
+        //设置自己为代理来监听文字的输入
+        textView.delegate = self
+        //// 垂直方向总是有弹簧效果
+        textView.alwaysBounceVertical = true
+        //拖动textview的时候键盘消失
+        textView.keyboardDismissMode = .onDrag
+        textView.font = UIFont.systemFont(ofSize: 16)
+        return textView
+    }()
+
 
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +95,24 @@ class WYComposeViewController: UIViewController {
     
 
 }
+
+extension WYComposeViewController:UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        //当textview有文字的时候右边item可用
+        navigationItem.rightBarButtonItem?.isEnabled = textView.hasText
+    }
+    
+    //下面方法同样能够实现拖动textView的时候键盘消失
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        // 取消第一响应者
+//        // self.textView.resignFirstResponder()
+//        self.view.endEditing(true)
+//    }
+
+    
+    
+}
+
 
 //MARK: - 初始化界面
 
@@ -96,6 +129,12 @@ extension WYComposeViewController{
         // 默认设置为不可用
         navigationItem.rightBarButtonItem?.isEnabled = false
         
+        view.addSubview(textView)
+        
+        //约束
+        textView.snp_makeConstraints { (make ) in
+            make.edges.equalTo(self.view)
+        }
         
     }
     

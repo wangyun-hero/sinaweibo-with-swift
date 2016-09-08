@@ -15,9 +15,29 @@ class WYComposeViewController: UIViewController {
 
         setupUI()
         
+        //注册通知监听键盘的弹出
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(noti:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
         // Do any additional setup after loading the view.
     }
     
+    //监听键盘的方法
+    func keyboardWillChangeFrame(noti:Notification) {
+        //print(noti)
+        //取到键盘最终要停留的位置
+        let frame = (noti.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //取到键盘执行动画的时间
+        let duration = (noti.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        //更新约束
+        composeToolBar.snp_updateConstraints { (make ) in
+            make.bottom.equalTo(self.view).offset(frame.origin.y - HMScreenH)
+        }
+        
+        UIView.animate(withDuration: duration) { 
+            self.view.layoutIfNeeded()
+        }
+        
+    }
     
     
     func back() {

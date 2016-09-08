@@ -108,7 +108,12 @@ class WYComposeViewController: UIViewController {
     }()
     
     //懒加载底部的view
-    lazy var composeToolBar : WYComposeToolBar = WYComposeToolBar()
+    lazy var composeToolBar : WYComposeToolBar = {
+        let composeToolBar = WYComposeToolBar()
+        //将控制器设置为composeToolBar的代理属性
+        composeToolBar.delegata = self
+        return composeToolBar
+    }()
 
 
 
@@ -118,6 +123,27 @@ class WYComposeViewController: UIViewController {
     }
 
 }
+
+//遵守协议,实现代理方法
+extension WYComposeViewController:WYComposeToolBarDelegata {
+    func composeToolBar(toolBar: WYComposeToolBar, type: ComposeToolBarButtonType) {
+        switch type {
+        case .picture:
+            print("home")
+        case .mention:
+            print("@")
+        case .trend:
+            print("#")
+        case .emotion:
+            print("表情")
+        case .add:
+            print("+")
+        }
+
+    }
+}
+
+
 
 extension WYComposeViewController:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {

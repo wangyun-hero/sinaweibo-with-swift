@@ -72,17 +72,23 @@ class WYComposeViewController: UIViewController {
     }()
     
     //textView
-    internal lazy var textView: UITextView = {
-        let textView = UITextView()
+    internal lazy var textView: WYTextView = {
+        let textView = WYTextView()
+        //设置占位文字
+        textView.placeholder = "听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配听说下雨天和黄焖鸡更配"
         //设置自己为代理来监听文字的输入
         textView.delegate = self
         //// 垂直方向总是有弹簧效果
         textView.alwaysBounceVertical = true
         //拖动textview的时候键盘消失
         textView.keyboardDismissMode = .onDrag
+        //设置字体大小
         textView.font = UIFont.systemFont(ofSize: 16)
         return textView
     }()
+    
+    //懒加载底部的view
+    lazy var composeToolBar : WYComposeToolBar = WYComposeToolBar()
 
 
 
@@ -90,9 +96,6 @@ class WYComposeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
 
 }
 
@@ -125,15 +128,21 @@ extension WYComposeViewController{
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(back))
         navigationItem.titleView = titleLabel
         
+        //设置右边的item
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         // 默认设置为不可用
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         view.addSubview(textView)
+        view.addSubview(composeToolBar)
         
         //约束
         textView.snp_makeConstraints { (make ) in
             make.edges.equalTo(self.view)
+        }
+        composeToolBar.snp_makeConstraints { (make) in
+            make.left.bottom.right.equalTo(self.view)
+            make.height.equalTo(44)
         }
         
     }

@@ -47,6 +47,7 @@
 		CB7CD56A1D7F3A0800D6B4EE /* compose.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7CD5691D7F3A0800D6B4EE /* compose.plist */; };
 		CB7CD56C1D805BD300D6B4EE /* WYComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */; };
 		CB7CD56E1D807D5100D6B4EE /* WYTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */; };
+		CB7CD5701D81AAA200D6B4EE /* WYComposeToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD56F1D81AAA200D6B4EE /* WYComposeToolBar.swift */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		CB7CD5691D7F3A0800D6B4EE /* compose.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = compose.plist; sourceTree = "<group>"; };
 		CB7CD56B1D805BD300D6B4EE /* WYComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeViewController.swift; sourceTree = "<group>"; };
 		CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYTextView.swift; sourceTree = "<group>"; };
+		CB7CD56F1D81AAA200D6B4EE /* WYComposeToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposeToolBar.swift; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				CB7CD55E1D7F220A00D6B4EE /* WYComposeView.swift */,
 				CB7CD5671D7F324F00D6B4EE /* WYComposeButton.swift */,
 				CB7CD56D1D807D5100D6B4EE /* WYTextView.swift */,
+				CB7CD56F1D81AAA200D6B4EE /* WYComposeToolBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 			files = (
 				CB38C3301D75CB2B00EE51F0 /* Constraint.swift in Sources */,
 				CB38C3341D75CB2B00EE51F0 /* ConstraintMaker.swift in Sources */,
+				CB7CD5701D81AAA200D6B4EE /* WYComposeToolBar.swift in Sources */,
 				CB38C3391D75CB2B00EE51F0 /* SnapKit.swift in Sources */,
 				CB3682D81D7C701F00F9493E /* WYPicturViewCell.swift in Sources */,
 				CB1BFE4A1D7DCA140042152A /* WYRefreshControlH.swift in Sources */,

@@ -114,6 +114,15 @@ class WYComposeViewController: UIViewController {
         composeToolBar.delegata = self
         return composeToolBar
     }()
+    
+    //懒加载picture
+    lazy var pictureView :WYComposePictureView = {
+        
+        let pictureView = WYComposePictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        pictureView.backgroundColor = UIColor.red
+        return pictureView
+    }()
+
 
 
 
@@ -172,6 +181,8 @@ extension WYComposeViewController:UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //取到对应的图片
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //将图片添加到pictureview
+        
         //关闭imageVC
         picker.dismiss(animated: true, completion: nil)
     }
@@ -217,6 +228,7 @@ extension WYComposeViewController{
         
         view.addSubview(textView)
         view.addSubview(composeToolBar)
+        textView.addSubview(pictureView)
         
         //约束
         textView.snp_makeConstraints { (make ) in
@@ -225,6 +237,12 @@ extension WYComposeViewController{
         composeToolBar.snp_makeConstraints { (make) in
             make.left.bottom.right.equalTo(self.view)
             make.height.equalTo(44)
+        }
+        pictureView.snp_makeConstraints { (make ) in
+            make.top.equalTo(textView).offset(100)
+            make.left.equalTo(textView).offset(10)
+            make.width.equalTo(textView.snp_width).offset(-20)
+            make.height.equalTo(pictureView.snp_width)
         }
         
     }

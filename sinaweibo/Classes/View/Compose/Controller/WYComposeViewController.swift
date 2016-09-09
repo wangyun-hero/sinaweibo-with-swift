@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class WYComposeViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -119,7 +120,7 @@ class WYComposeViewController: UIViewController {
     lazy var pictureView :WYComposePictureView = {
         
         let pictureView = WYComposePictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-        pictureView.backgroundColor = UIColor.red
+        pictureView.backgroundColor = UIColor.white
         return pictureView
     }()
 
@@ -182,7 +183,7 @@ extension WYComposeViewController:UIImagePickerControllerDelegate, UINavigationC
         //取到对应的图片
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         //将图片添加到pictureview
-        
+        pictureView.addImage(image: image)
         //关闭imageVC
         picker.dismiss(animated: true, completion: nil)
     }

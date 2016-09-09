@@ -26,6 +26,7 @@ class WYComposePictureView: UICollectionView {
         self.register(WYComposePictureViewCell.self, forCellWithReuseIdentifier: "cell")
         //设置数据源
         self.dataSource = self
+        self.delegate = self
     }
     
     func addImage(image:UIImage) {
@@ -59,18 +60,31 @@ class WYComposePictureView: UICollectionView {
 }
 
 // MARK: - 数据源
-extension WYComposePictureView : UICollectionViewDataSource {
+extension WYComposePictureView : UICollectionViewDataSource,UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        //如果图片等于0或者9的话就显示实现张数,否则就加一
+        return (images.count == 0 || images.count == 9) ? images.count : images.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! WYComposePictureViewCell
         //cell.backgroundColor = RandomColor
-        //取到对应位置的图片
-        let image = images[indexPath.item]
-        //设置给cell
-        cell.image = image
+        
+        if indexPath.item < images.count {
+            
+            //取到对应位置的图片
+            let image = images[indexPath.item]
+            //设置给cell
+            cell.image = image
+        }else{
+            cell.image = nil
+        }
+        
         
         //定义一个闭包
         cell.deleteClickClosure = {[weak self]
@@ -94,7 +108,19 @@ class WYComposePictureViewCell: UICollectionViewCell {
     var image : UIImage? {
         
         didSet{
-            imageView.image = image
+            if image == nil {
+                let image1 = UIImage(named: "compose_pic_add")
+                let image2 = UIImage(named: "compose_pic_add_highlighted")
+                imageView.image = image1
+                imageView.highlightedImage = image2
+            }else{
+                
+                imageView.image = image
+                //这里是处理当点击不是加号的时候图片有变动的问题
+                imageView.highlightedImage = image
+            }
+            //当cell没有图片的时候设置叉叉隐藏
+            deleteButton.isHidden = image == nil
         }
     }
 
@@ -102,6 +128,7 @@ class WYComposePictureViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

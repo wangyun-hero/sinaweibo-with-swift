@@ -126,10 +126,11 @@ class WYComposeViewController: UIViewController {
 
 //遵守协议,实现代理方法
 extension WYComposeViewController:WYComposeToolBarDelegata {
-    func composeToolBar(toolBar: WYComposeToolBar, type: ComposeToolBarButtonType) {
+    func composeToolBar(toolBar: WYComposeToolBar, type: ComposeToolBarButtonType)
+    {
         switch type {
         case .picture:
-            print("home")
+            selectPicture()
         case .mention:
             print("@")
         case .trend:
@@ -141,6 +142,41 @@ extension WYComposeViewController:WYComposeToolBarDelegata {
         }
 
     }
+    
+    func selectPicture () {
+        //系统提供的选择照片的控制器
+        let vc = UIImagePickerController()
+        
+        //成为代理
+        vc.delegate = self
+        
+        //判断某个数据类型是否可用
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
+            print("相机不可用")
+        }
+        //来源  就是我们图片的来源  1 相机 2 图库 3 相册
+        vc.sourceType = .photoLibrary
+        
+        //是否可以编辑,就是选择照片之后可以编辑
+        vc.allowsEditing = true
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    
+}
+
+//实现上面的代理方法
+extension WYComposeViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //代理方法,实现代理方法imagevc就不会自动关闭了
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //取到对应的图片
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //关闭imageVC
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 

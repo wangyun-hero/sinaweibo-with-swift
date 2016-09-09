@@ -71,6 +71,15 @@ extension WYComposePictureView : UICollectionViewDataSource {
         let image = images[indexPath.item]
         //设置给cell
         cell.image = image
+        
+        //定义一个闭包
+        cell.deleteClickClosure = {[weak self]
+            () -> () in
+            self?.images.remove(at: indexPath.item)
+        //刷新数据
+            self?.reloadData()
+        }
+        
         return cell
     }
     
@@ -78,6 +87,9 @@ extension WYComposePictureView : UICollectionViewDataSource {
 
 
 class WYComposePictureViewCell: UICollectionViewCell {
+    //删除按钮执行的闭包
+    var deleteClickClosure: (() -> ())?
+    
     //通过外界传值设置image图片
     var image : UIImage? {
         
@@ -111,6 +123,8 @@ class WYComposePictureViewCell: UICollectionViewCell {
     
     func deleteButtonClick() {
         print("点击了删除")
+        //执行闭包,因为我们要删除images里面的元素,在这里娶不到,那么我们就要告诉pictureview
+        deleteClickClosure?()
     }
     
     

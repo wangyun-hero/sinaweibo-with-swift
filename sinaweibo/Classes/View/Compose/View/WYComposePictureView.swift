@@ -9,6 +9,10 @@
 import UIKit
 import SVProgressHUD
 class WYComposePictureView: UICollectionView {
+    
+    //定义一个闭包属性
+    var addImageClosure: (() -> ())?
+    
     //懒加载一个数组保存图片
     lazy var images:[UIImage] = [UIImage]()
     
@@ -61,8 +65,18 @@ class WYComposePictureView: UICollectionView {
 
 // MARK: - 数据源
 extension WYComposePictureView : UICollectionViewDataSource,UICollectionViewDelegate {
+    //代理方法
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //取消选中的效果
         collectionView.deselectItem(at: indexPath, animated: true)
+        //判断是否是最后一个cell
+        if indexPath.item == images.count {
+            //执行闭包,告诉控制器弹出UIImagePickerVC
+            addImageClosure?()
+            
+        }
+        
+        
     }
     
     

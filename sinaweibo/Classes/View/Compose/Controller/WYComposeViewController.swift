@@ -120,6 +120,11 @@ class WYComposeViewController: UIViewController {
     lazy var pictureView :WYComposePictureView = {
         
         let pictureView = WYComposePictureView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        //准备的闭包
+        pictureView.addImageClosure = {[weak self] in
+            print("加号被点击了")
+            self?.selectPicture()
+        }
         pictureView.backgroundColor = UIColor.white
         return pictureView
     }()

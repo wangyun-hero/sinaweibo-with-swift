@@ -187,8 +187,9 @@ extension WYComposeViewController:UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //取到对应的图片
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let img = image.scaleTo(width: 600)
         //将图片添加到pictureview
-        pictureView.addImage(image: image)
+        pictureView.addImage(image: img)
         //关闭imageVC
         picker.dismiss(animated: true, completion: nil)
     }

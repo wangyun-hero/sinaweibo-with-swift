@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         //设置根控制器
-//        window?.rootViewController = WYTabBarController()
+        window?.rootViewController = WYNavigationController(rootViewController: WYComposeViewController())
         
-        window?.rootViewController = HMUserAccountViewModel.sharedModel.userLogon ? WYWelcomeViewController() : WYTabBarController()
+//        window?.rootViewController = HMUserAccountViewModel.sharedModel.userLogon ? WYWelcomeViewController() : WYTabBarController()
         
         //显示
         window?.makeKeyAndVisible()

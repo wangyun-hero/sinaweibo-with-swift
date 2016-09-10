@@ -45,6 +45,8 @@ class WYComposeViewController: UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    
+// MARK: - 懒加载控件
     //懒加载中间的label(用到富文本)的标题
     internal lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -128,6 +130,14 @@ class WYComposeViewController: UIViewController {
         pictureView.backgroundColor = UIColor.white
         return pictureView
     }()
+    
+    //懒加载表情键盘
+    lazy var emoticonKeyBoard :WYEmotionKeyboard = {
+        
+        let emoticonKeyBoard = WYEmotionKeyboard()
+        emoticonKeyBoard.frame.size = CGSize(width: HMScreenW, height: 216)
+        return emoticonKeyBoard
+    }()
 
 
 
@@ -151,11 +161,27 @@ extension WYComposeViewController:WYComposeToolBarDelegata {
         case .trend:
             print("#")
         case .emotion:
-            print("表情")
+            changeKeyboard()
         case .add:
             print("+")
         }
 
+    }
+    
+    func changeKeyboard() {
+        //如果inputview为nil的话,代表是系统的键盘
+        if textView.inputView == nil {
+            textView.inputView = emoticonKeyBoard
+        }else{
+            //当前是表情键盘,切换为系统键盘
+            textView.inputView = nil
+        }
+        //刷新inputview
+        textView.reloadInputViews()
+        //判断是否是第一响应者,如果不是,那么成为第一响应者,会弹起键盘
+        if !textView.isFirstResponder {
+            textView.becomeFirstResponder()
+        }
     }
     
     func selectPicture () {

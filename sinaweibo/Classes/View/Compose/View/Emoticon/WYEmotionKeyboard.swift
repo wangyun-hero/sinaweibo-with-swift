@@ -31,6 +31,11 @@ class WYEmotionKeyboard: UIView {
     }
     
     //懒加载控件
-    lazy var toolBar: WYEmoticonToolBar = WYEmoticonToolBar()
-
+    private lazy var toolBar: WYEmoticonToolBar = {
+        let toolBar = WYEmoticonToolBar()
+        toolBar.emotionTypeChangedClosure = { (type) -> () in
+            print("切换按钮点击了\(type)")
+        }
+        return toolBar
+    }()
 }

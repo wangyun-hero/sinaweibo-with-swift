@@ -51,6 +51,7 @@
 		CB7CD5721D829C4F00D6B4EE /* WYComposePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5711D829C4F00D6B4EE /* WYComposePictureView.swift */; };
 		CB7CD5751D842A7000D6B4EE /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CB7CD5741D842A7000D6B4EE /* Emoticons.bundle */; };
 		CB7CD5771D842B3B00D6B4EE /* WYEmotionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5761D842B3B00D6B4EE /* WYEmotionKeyboard.swift */; };
+		CB7CD5791D845CE600D6B4EE /* WYEmoticonToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CD5781D845CE600D6B4EE /* WYEmoticonToolBar.swift */; };
 		CBA86D9D1D73F8C300A1E05C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */; };
 		CBA86DA21D73F8C300A1E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA01D73F8C300A1E05C /* Main.storyboard */; };
 		CBA86DA41D73F8C300A1E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA86DA31D73F8C300A1E05C /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		CB7CD5711D829C4F00D6B4EE /* WYComposePictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYComposePictureView.swift; sourceTree = "<group>"; };
 		CB7CD5741D842A7000D6B4EE /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		CB7CD5761D842B3B00D6B4EE /* WYEmotionKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYEmotionKeyboard.swift; sourceTree = "<group>"; };
+		CB7CD5781D845CE600D6B4EE /* WYEmoticonToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WYEmoticonToolBar.swift; sourceTree = "<group>"; };
 		CBA86D991D73F8C300A1E05C /* sinaweibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaweibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA86D9C1D73F8C300A1E05C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBA86DA11D73F8C300A1E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				CB7CD5741D842A7000D6B4EE /* Emoticons.bundle */,
 				CB7CD5761D842B3B00D6B4EE /* WYEmotionKeyboard.swift */,
+				CB7CD5781D845CE600D6B4EE /* WYEmoticonToolBar.swift */,
 			);
 			path = Emoticon;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				CBA86DC91D73F91A00A1E05C /* WYTabBarController.swift in Sources */,
 				CB06EB741D78AEB40048DA10 /* HMUserAccountViewModel.swift in Sources */,
 				CB3682D21D7C37D200F9493E /* WYStatusPictureInfo.swift in Sources */,
+				CB7CD5791D845CE600D6B4EE /* WYEmoticonToolBar.swift in Sources */,
 				CBA86DC71D73F91A00A1E05C /* WYDiscoverTableViewController.swift in Sources */,
 				CBA86DDD1D74ABE400A1E05C /* WYNavigationController.swift in Sources */,
 				CB06EB821D7AA9D30048DA10 /* WYStatusViewModel.swift in Sources */,

@@ -172,9 +172,11 @@ extension WYComposeViewController:WYComposeToolBarDelegata {
         //如果inputview为nil的话,代表是系统的键盘
         if textView.inputView == nil {
             textView.inputView = emoticonKeyBoard
+            composeToolBar.iskeyBoard = false
         }else{
             //当前是表情键盘,切换为系统键盘
             textView.inputView = nil
+            composeToolBar.iskeyBoard = true
         }
         //刷新inputview
         textView.reloadInputViews()

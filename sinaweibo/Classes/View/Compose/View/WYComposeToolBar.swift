@@ -32,6 +32,24 @@ protocol WYComposeToolBarDelegata: NSObjectProtocol {
 
 class WYComposeToolBar: UIView {
     
+    var iskeyBoard: Bool = true {
+        
+        didSet{
+            //取到btn
+            let btn = self.viewWithTag(3) as! UIButton
+            // 默认是键盘的图标
+            var imgNamed = "compose_keyboardbutton_background"
+            if iskeyBoard {
+                //表情图标
+                imgNamed = "compose_emoticonbutton_background"
+            }
+            // 设置不同状态的图标
+            btn.setImage(UIImage(named:imgNamed), for: UIControlState.normal)
+            btn.setImage(UIImage(named:"\(imgNamed)_highlighted"), for: UIControlState.highlighted)
+        }
+    }
+    
+    
     //定义代理属性
     weak var delegata:WYComposeToolBarDelegata?
 
